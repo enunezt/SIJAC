@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+   <p:outputPanel id="pageContentperfil" >  
+      
+        <h:form id="formPerfil"  prependId="false">
+			<p:growl id="growl"  sticky="true" autoUpdate="true" showSummary="true"/> 
+			<h:panelGrid id="idPnlPerfil" columns="2" >
+			 			
+		<h:outputLabel value="${msgs.lbl_Nombre}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ perfilController.perfil.nombre}" required="#{param['validarFormPerfil']=='true'}"> 
+			
+		</p:inputText>
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ perfilController.perfil.descripcion}" />
+		</h:panelGroup>			
+		</h:panelGrid>
+		 <p:pickList id="opcionesPkl" value="#{perfilController.opciones}"   
+                var="opcionPkl"  disabled="true"
+                itemLabel="#{opcionPkl}"  
+                itemValue="#{opcionPkl}">
+        <f:facet name="sourceCaption">${msgs.lbl_disponibles}</f:facet>  
+        <f:facet name="targetCaption">${msgs.lbl_asignadas}</f:facet>  
+                </p:pickList>
+	
+		<h:panelGrid columns="4">
+		<p:commandButton id="idBtnCrear" action="#{perfilController.doCrear}" value="${msgs.btn_crear}" update="idTblPerfil,opcionesPkl" style="margin-top: 10px;" icon="ui-icon-plusthick" >
+		<f:param name="validarFormPerfil" value="true"></f:param>
+		</p:commandButton>
+		<p:commandButton action="#{perfilController.doActualizar}" value="${msgs.btn_modificar}" update="idTblPerfil,opcionesPkl" style="margin-top: 10px;" icon="ui-icon-disk" >
+		<f:param name="validarFormPerfil" value="true"></f:param>
+		</p:commandButton>
+		<p:commandButton action="#{perfilController.doBorrar}" value="${msgs.btn_eliminar}" update="idTblPerfil,opcionesPkl" style="margin-top: 10px;" icon="ui-icon-minusthick" >
+		<f:param name="validarFormPerfil" value="true"></f:param>
+		</p:commandButton>
+		<p:commandButton action="#{perfilController.doConsultar}" value="${msgs.btn_consultar}" update="idTblPerfil" style="margin-top: 10px;" icon="ui-icon-search"  ></p:commandButton>
+	                
+		</h:panelGrid>
+	
+		<p:dataTable id="idTblPerfil" value="#{perfilController.entidadLst}" binding="#{perfilController.tabla}" var="perfilTO" rows="10" border="1" >
+			  			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_id}" />
+		</f:facet>		
+		<h:outputText value="#{perfilTO.idPerfil}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Nombre}" />
+		</f:facet>		
+		<h:outputText value="#{perfilTO.nombre}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		</f:facet>		
+		<h:outputText value="#{perfilTO.descripcion}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_FecCambio}" />
+		</f:facet>		
+		<h:outputText value="#{perfilTO.fecCambio}"  />
+		</p:column>	
+			
+		<p:column exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnPerfilPrintPDF2"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty perfilController.entidadLst}" immediate="true">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblPerfil" type="pdf" fileName="reportePerfil"  
+	   preProcessor="#{perfilController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnPerfilPrintXLS2"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty perfilController.entidadLst}" immediate="true">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblPerfil" type="xls" fileName="reportePerfil" 
+	   postProcessor="#{perfilController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>
+		
+		</f:facet>	
+		
+		<p:commandButton id="btnSelecTblPerfil" style="margin-top: 10px;" icon="ui-icon-circle-check" update="@all,:formPerfil,:form#{uiParamEntOrig}"  actionListener="#{perfilController.doSelectListener}" rendered="#{uiParamBckBeanOrigen!=null}" oncomplete="dlg#{uiParamEntAtt}.hide();" > 
+		<f:attribute name="attBckBeanOrigen" value="#{uiParamBckBeanOrigen}"></f:attribute>
+		</p:commandButton>
+	    		</p:column>
+		
+		</p:dataTable>
+	
+	</h:form>
+		</p:outputPanel>
+	
+   </ui:composition>

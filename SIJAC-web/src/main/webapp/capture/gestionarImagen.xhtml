@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+    <ui:define name="content">
+    <p:growl id="growlImagen"  sticky="true" autoUpdate="true" showSummary="true"/> 
+ 		<f:view> 		
+ 		<p:panel header="${msgs.lbl_captura_imagen}">
+ 	
+ 	<h:form id="formGimagen" prependId="false" >	
+ 		<p:commandButton title="${msgs.btn_select}"  
+ 		oncomplete="dlgImagen.show()" icon="ui-icon-image"></p:commandButton>
+ 		  <p:graphicImage value="/imagescapture/#{imagenController.photoRecorte}" cache="false" width="100" height="100" id="idImagenGImagen"/>  
+	</h:form>
+		 		</p:panel>
+		
+		
+	<p:dialog header="${msgs.lbl_captura_imagen}" showEffect="fade" hideEffect="fade" widgetVar="dlgImagen" modal="false" height="300" width="500">
+    <h:panelGrid id="dplyImagen" columns="1" style="margin: 10px;"> 
+      <ui:include  src="imagenEdit.xhtml">
+    	<ui:param name="uiParamImagenBckBeanOrigen" value="imagenController.data" />
+      	<ui:param name="uiParamEntAtt" value="Imagen" />
+      	<ui:param name="uiParamEntOrig" value="Gimagen" />
+      </ui:include>
+    </h:panelGrid>
+     <f:facet name="footer">
+                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
+                   
+                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgImagen.hide()" icon="ui-icon-closethick"/>
+                </h:panelGroup>
+            </f:facet>
+    </p:dialog>
+ 		</f:view>
+		</ui:define>		
+		
+	</ui:composition>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+        <h:form id="formCatalogoDetalle"  prependId="false">
+			<h:panelGrid id="idPnlCatalogoDetalle" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_Codigo}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ catalogoDetalleController.catalogoDetalle.codigo}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ catalogoDetalleController.catalogoDetalle.descripcion}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Estado}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ catalogoDetalleController.catalogoDetalle.estado}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_FechaCambio}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ catalogoDetalleController.catalogoDetalle.fechaCambio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_IdCatalogoDetalle}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ catalogoDetalleController.catalogoDetalle.idCatalogoDetalle}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Valor}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ catalogoDetalleController.catalogoDetalle.valor}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_IdCatalogo}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ catalogoDetalleController.catalogoDetalle.idCatalogo.idIdCatalogo}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+		<h:panelGrid columns="1">
+		<p:commandButton action="#{catalogoDetalleController.doConsultar}" value="${msgs.btn_consultar}" update="idTblCatalogoDetalle" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
+	                
+		</h:panelGrid>
+	<div  style="width:100%; overflow: auto;">
+		<p:dataTable id="idTblCatalogoDetalle" value="#{catalogoDetalleController.entidadLst}" binding="#{catalogoDetalleController.tabla}" var="catalogoDetalleTO" rows="10" border="1" >
+		 
+		
+		  			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Codigo}" />
+		</f:facet>		
+		<h:outputText value="#{catalogoDetalleTO.codigo}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		</f:facet>		
+		<h:outputText value="#{catalogoDetalleTO.descripcion}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Estado}" />
+		</f:facet>		
+		<h:outputText value="#{catalogoDetalleTO.estado}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_FechaCambio}" />
+		</f:facet>		
+		<h:outputText value="#{catalogoDetalleTO.fechaCambio}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_IdCatalogoDetalle}" />
+		</f:facet>		
+		<h:outputText value="#{catalogoDetalleTO.idCatalogoDetalle}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Valor}" />
+		</f:facet>		
+		<h:outputText value="#{catalogoDetalleTO.valor}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_IdCatalogo}" />
+		</f:facet>		
+		<h:outputText value="#{catalogoDetalleTO.idCatalogo.idIdCatalogo}"  />
+		</p:column>		
+			
+		<p:column  exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnCatalogoDetallePrintPDF2"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty catalogoDetalleController.entidadLst}">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblCatalogoDetalle" type="pdf" fileName="reporteCatalogoDetalle" excludeColumns="7"
+	   preProcessor="#{catalogoDetalleController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnCatalogoDetallePrintXLS2"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty catalogoDetalleController.entidadLst}">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblCatalogoDetalle" type="xls" fileName="reporteCatalogoDetalle" excludeColumns="7"
+	   postProcessor="#{catalogoDetalleController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>
+		
+		</f:facet>	
+		<p:commandButton id="btnSelecTblCatalogoDetalle" style="margin-top: 10px;" icon="ui-icon-circle-check" update="@all,:formCatalogoDetalle,:form#{uiParamEntOrig}"  actionListener="#{catalogoDetalleController.doSelectListener}" rendered="#{uiParamBckBeanOrigen!=null}" oncomplete="dlg#{uiParamEntAtt}.hide();"> 
+		<f:attribute name="attBckBeanOrigen" value="#{uiParamBckBeanOrigen}"></f:attribute>
+		</p:commandButton>
+	    		</p:column>
+		
+		</p:dataTable>
+		</div>	
+	</h:form>	
+</ui:composition>
+	

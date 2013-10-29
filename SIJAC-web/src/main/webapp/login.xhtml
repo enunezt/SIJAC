@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/templates/template_login.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+    <ui:define name="content">
+        <h:outputStylesheet name="app.css" library="css"/>
+        <h:outputScript target="head" name="showMessage.js" library="js"/>
+        <h1>Welcome</h1>
+       <f:view>
+     	 <h:form id="formLogin">
+     	
+    <p:messages autoUpdate="true" id="idMsg" ></p:messages>
+   <p:panel header="${msgs.lbl_ingresoSistema}" style="Width:300px;margin:0 auto 0 auto;">
+
+    <h:panelGrid columns="2">
+    	<p:outputLabel value="${msgs.lbl_loggin}:" for="idUser"/>
+    <p:inputText id="idUser"  value="#{userSettingsController.usuario}" required="#{param['formLogin']=='true'}"/>
+   	<p:outputLabel value="${msgs.lbl_password}:" for="idPass"/>
+    <p:password id="idPass" value="#{userSettingsController.pass}" required="#{param['formLogin']=='true'}"/>
+    </h:panelGrid>        
+    <p:commandButton value="${msgs.btn_ingresar}" update=":formLogin:idMsg,:formLogin:idUser,:formLogin:idPass" process="@all"
+    action="#{userSettingsController.verificarUsuario}">
+    <f:param name="formLogin" value="true" />
+    </p:commandButton>    
+    </p:panel>
+  
+ </h:form>  
+ 		</f:view>
+  
+    </ui:define>
+</ui:composition>

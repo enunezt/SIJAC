@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+                <p:outputPanel>
+    <h:form id="formOpcion"  prependId="false">
+			
+		<h:panelGrid id="idPnlOpcion" columns="2" >
+			
+		<h:outputLabel value="${msgs.lbl_Tipo}" />
+		<h:panelGroup>			
+		<p:selectOneMenu  value="#{ opcionController.opcion.tipo}">
+		<f:selectItem itemValue="1" itemLabel="1-Pagina" />
+		<f:selectItem itemValue="2" itemLabel="2-Accion" />		
+		</p:selectOneMenu>
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Url}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ opcionController.opcion.url}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Menu}" />
+		<h:panelGroup>	
+		<h:panelGrid columns="3" >
+		
+		<h:outputLabel value="${msgs.lbl_Nombre}" />		 			
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />	
+		<h:panelGroup/>
+		<p:inputText value="#{ opcionController.opcion.menu.nombre}" readonly="true" />	
+		<p:inputText value="#{ opcionController.opcion.menu.descripcion}" readonly="true"/>
+		<p:commandButton title="${msgs.btn_select} ${msgs.lbl_Menu}" process="idPnlOpcion" oncomplete="dlgMenu.show()" icon="ui-icon-search"></p:commandButton>
+		</h:panelGrid>
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+		<h:panelGrid columns="4">
+		<p:commandButton action="#{opcionController.doCrear}" value="${msgs.btn_crear}" update="idTblOpcion" style="margin-top: 10px;" icon="ui-icon-plusthick" ></p:commandButton>
+		<p:commandButton action="#{opcionController.doActualizar}" value="${msgs.btn_modificar}" update="idTblOpcion" style="margin-top: 10px;" icon="ui-icon-disk" ></p:commandButton>
+		<p:commandButton action="#{opcionController.doBorrar}" value="${msgs.btn_eliminar}" update="idTblOpcion" style="margin-top: 10px;" icon="ui-icon-minusthick" ></p:commandButton>
+		<p:commandButton action="#{opcionController.doConsultar}" value="${msgs.btn_consultar}" update="idTblOpcion" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
+	                
+		</h:panelGrid>
+	<div  style="width:100%; overflow: auto;">
+		<p:dataTable id="idTblOpcion" value="#{opcionController.entidadLst}" binding="#{opcionController.tabla}" var="opcionTO" rows="10" border="1" >
+		 
+		
+		  			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_id}" />
+		</f:facet>		
+		<h:outputText value="#{opcionTO.idOpcion}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Nombre}" />
+		</f:facet>		
+		<h:outputText value="#{opcionTO.menu.nombre}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		</f:facet>		
+		<h:outputText value="#{opcionTO.menu.descripcion}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Tipo}" />
+		</f:facet>		
+		<h:outputText value="#{opcionTO.tipo}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Url}" />
+		</f:facet>		
+		<h:outputText value="#{opcionTO.url}"  />
+		</p:column>		
+				
+		<p:column exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnOpcionPrintPDF2"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty opcionController.entidadLst}">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblOpcion" type="pdf" fileName="reporteOpcion" excludeColumns="6"
+	   preProcessor="#{opcionController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnOpcionPrintXLS2"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty opcionController.entidadLst}">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblOpcion" type="xls" fileName="reporteOpcion" excludeColumns="6"
+	   postProcessor="#{opcionController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>
+		
+		</f:facet>		
+		<p:commandButton id="btnEditTblOpcion" action="#{opcionController.doEditar}" style="margin-top: 10px;" icon="ui-icon-pencil" process="@all,:formOpcion" update="@all,:formOpcion:idPnlOpcion" ></p:commandButton>
+		</p:column>
+		
+		</p:dataTable>
+	</div>
+	</h:form>
+		</p:outputPanel>
+	 			
+	 			
+	<p:dialog header="${msgs.lbl_Menu}" showEffect="fade" hideEffect="fade" widgetVar="dlgMenu" modal="false" height="300" width="500">
+    <h:panelGrid id="dplyOpcionMenu" columns="1" style="margin: 10px;"> 
+    <ui:include  src="../menu/menuSelect.xhtml"  >
+    <ui:param name="uiParamBckBeanOrigen" value="opcionController.opcion.menu" />
+    <ui:param name="uiParamEntAtt" value="Menu" />
+    <ui:param name="uiParamEntOrig" value="Opcion" />
+    </ui:include>       
+    </h:panelGrid>
+     <f:facet name="footer">
+                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
+                   
+                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgMenu.hide()" icon="ui-icon-closethick"/>
+                </h:panelGroup>
+            </f:facet>
+    </p:dialog>
+</ui:composition>

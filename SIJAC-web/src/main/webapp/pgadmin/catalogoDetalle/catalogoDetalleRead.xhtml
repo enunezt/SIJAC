@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+      	<h:panelGrid id="idPnlCatalogoDetalle" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_Codigo}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoDetalleController.catalogoDetalle.codigo}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoDetalleController.catalogoDetalle.descripcion}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Estado}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoDetalleController.catalogoDetalle.estado}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_FechaCambio}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoDetalleController.catalogoDetalle.fechaCambio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_IdCatalogoDetalle}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoDetalleController.catalogoDetalle.idCatalogoDetalle}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Valor}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoDetalleController.catalogoDetalle.valor}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_IdCatalogo}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoDetalleController.catalogoDetalle.idCatalogo.idIdCatalogo}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+</ui:composition>
+	

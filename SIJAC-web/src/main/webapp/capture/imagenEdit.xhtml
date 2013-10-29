@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+  
+<h:form id="formImagen"  >		 
+		       <h:panelGrid columns="2" >  
+        
+        <p:photoCam widgetVar="pc" listener="#{imagenController.oncapture}" update="remoteCroppedImage"  />  
+  
+        <p:commandButton type="button" value="Capture" onclick="pc.capture()"/>  
+  
+    <!-- 
+     <h:panelGroup>
+    
+		 <p:imageSwitch effect="zoom" id="photos">  
+            <ui:repeat value="#{imagenController.photos}" var="photo">  
+                <p:graphicImage value="/imagescapture/#{photo}" cache="false" />  
+            </ui:repeat>  
+        </p:imageSwitch>
+     </h:panelGroup>
+     -->
+    </h:panelGrid> 
+    <h:panelGrid columns="3" id="cropperPanel">  
+        <p:imageCropper value="#{imagenController.croppedImage}" id="remoteCroppedImage" backgroundOpacity="0.3" 
+                    image="/resources/#{imagenController.photo}.jpg"  initialCoords="0,100,100,200"/>  
+          
+        <p:graphicImage id="localCroppedImage"  
+                    value="/imagescapture/#{imagenController.photoRecorte}" /> 
+                    
+    <p:commandButton id="btnSelecImagenCaptura" style="margin-top: 10px;" icon="ui-icon-circle-check"  update="@all,:formImagen,:form#{uiParamEntOrig}"  
+     actionListener="#{imagenController.doSelectImagenListener}" oncomplete="dlg#{uiParamEntAtt}.hide();" rendered="#{imagenController.photoRecorte != null}"> 
+		<f:attribute name="attImagenBckBeanOrigen" value="#{uiParamImagenBckBeanOrigen}"></f:attribute>
+		</p:commandButton> 
+    </h:panelGrid>  
+  
+    <p:commandButton value="Crop"  id="btnCrop" 
+                action="#{imagenController.crop}" 
+                update="formImagen,localCroppedImage,remoteCroppedImage"/>   
+  
+		
+</h:form>
+</ui:composition>

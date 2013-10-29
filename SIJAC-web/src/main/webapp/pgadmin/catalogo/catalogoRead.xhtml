@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+      	<h:panelGrid id="idPnlCatalogo" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoController.catalogo.descripcion}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_FecRegistro}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoController.catalogo.fecRegistro}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_IdCatalogo}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoController.catalogo.idCatalogo}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Nombre}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoController.catalogo.nombre}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_CatalogoDetalles}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ catalogoController.catalogo.catalogoDetalles.idCatalogoDetalles}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+</ui:composition>
+	

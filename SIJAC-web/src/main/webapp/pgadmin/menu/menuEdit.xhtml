@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+  
+      <h:form id="formMenu"  >		 
+			
+			<h:panelGrid id="idPnlMenu" columns="2" >			
+					
+		<h:outputLabel value="${msgs.lbl_Nombre}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ menuController.menu.nombre}" required="#{param['formMenu']=='true'}" label="${msgs.lbl_Nombre}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ menuController.menu.descripcion}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_IdPadre}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ menuController.menu.idPadre}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+		<h:panelGrid columns="4">
+		<p:commandButton action="#{menuController.doCrear}" value="${msgs.btn_crear}" update="idTblMenu" style="margin-top: 10px;" icon="ui-icon-plusthick" >
+		 <f:param name="formMenu" value="true"/>		
+		 </p:commandButton>
+		<p:commandButton action="#{menuController.doActualizar}" value="${msgs.btn_modificar}" update="idTblMenu" style="margin-top: 10px;" icon="ui-icon-disk">
+		 <!-- <f:param name="formMenuId" value="true"/> -->
+		 <f:param name="formMenu" value="true"/>
+		</p:commandButton>
+		<p:commandButton action="#{menuController.doBorrar}" value="${msgs.btn_eliminar}" update="idTblMenu" style="margin-top: 10px;" icon="ui-icon-minusthick" ></p:commandButton>
+		<p:commandButton action="#{menuController.doConsultar}" value="${msgs.btn_consultar}" update="idTblMenu" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
+	                
+		</h:panelGrid>
+	
+		<p:dataTable id="idTblMenu" value="#{menuController.entidadLst}" binding="#{menuController.tabla}" 
+		var="menuTO" rows="10" border="1"  paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+       rowsPerPageTemplate="10,20,30" resizableColumns="true">
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_id}" />
+		</f:facet>		
+		<h:outputText value="#{menuTO.idMenu}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Nombre}" />
+		</f:facet>		
+		<h:outputText value="#{menuTO.nombre}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Descripcion}" />
+		</f:facet>		
+		<h:outputText value="#{menuTO.descripcion}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_IdPadre}" />
+		</f:facet>		
+		<h:outputText value="#{menuTO.idPadre}"  />
+		</p:column>		
+			
+		<p:column  exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnMenuPrintPDF"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty menuController.entidadLst}">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblMenu" type="pdf" fileName="reporteMenu" excludeColumns="5"
+	   preProcessor="#{menuController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnMenuPrintXLS"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty menuController.entidadLst}">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblMenu" type="xls" fileName="reporteMenu" excludeColumns="5"
+	   postProcessor="#{menuController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>		
+		</f:facet>	
+		
+		<p:commandButton id="btnEditTblMenu" action="#{menuController.doEditar}" style="margin-top: 10px;" icon="ui-icon-pencil" process="@form" update="@all,:formMenu:idPnlMenu" ></p:commandButton>
+		</p:column>
+		
+		</p:dataTable>
+	
+	</h:form>
+</ui:composition>

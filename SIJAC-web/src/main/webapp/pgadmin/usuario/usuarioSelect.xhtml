@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+   
+  <p:outputPanel id="pageContentusuario" >  
+      
+        <h:form id="formUsuario"  prependId="false">
+			 <p:messages autoUpdate="true"></p:messages>
+			<h:panelGrid id="idPnlUsuario" columns="4" >
+		 		
+		<h:outputLabel value="${msgs.lbl_Usuario}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ usuarioController.usuario.usuario}" label="${msgs.lbl_Usuario}" required="#{param['validarForm']=='true'}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_Clave}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ usuarioController.usuario.clave}" label="${msgs.lbl_Clave}"  required="#{param['validarForm']=='true'}"/>
+		</h:panelGroup>					
+		 			
+		
+		<h:outputLabel value="${msgs.lbl_Perfiles}" />
+		<h:panelGroup>	 <p:pickList id="perfilesPkl" value="#{usuarioController.perfiles}"   
+                var="perfilPkl"  disabled="true"
+                itemLabel="#{perfilPkl}"  
+                itemValue="#{perfilPkl}">
+        <f:facet name="sourceCaption">${msgs.lbl_disponibles}</f:facet>  
+        <f:facet name="targetCaption">${msgs.lbl_asignadas}</f:facet>   
+                </p:pickList>
+		
+
+</h:panelGroup>	
+				
+		<h:panelGrid columns="1">
+		
+		<p:commandButton action="#{usuarioController.doConsultar}" value="${msgs.btn_consultar}" update="idTblUsuario,perfilesPkl" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
+	                
+		</h:panelGrid>
+	<div  style="width:100%; overflow: auto;">
+		<p:dataTable id="idTblUsuario" value="#{usuarioController.entidadLst}" binding="#{usuarioController.tabla}" var="usuarioTO" rows="10" border="1" >
+		  			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_id}" />
+		</f:facet>		
+		<h:outputText value="#{usuarioTO.idUsuario}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Usuario}" />
+		</f:facet>		
+		<h:outputText value="#{usuarioTO.usuario}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_Clave}" />
+		</f:facet>		
+		<h:outputText value="****"  />
+		</p:column>			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_FecRegistro}" />
+		</f:facet>		
+		<h:outputText value="#{usuarioTO.fecRegistro}"  />
+		</p:column>		
+		 			
+	
+		<p:column exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnUsuarioPrintPDF2"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty usuarioController.entidadLst}">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblUsuario" type="pdf" fileName="reporteUsuario" excludeColumns="12"
+	   preProcessor="#{usuarioController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnUsuarioPrintXLS2"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty usuarioController.entidadLst}">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblUsuario" type="xls" fileName="reporteUsuario" excludeColumns="12"
+	   postProcessor="#{usuarioController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>
+		
+		</f:facet>	
+		<p:commandButton id="btnSelecTblUsuario" style="margin-top: 10px;" icon="ui-icon-circle-check" update="@all,:formUsuario,:form#{uiParamEntOrig}"  actionListener="#{usuarioController.doSelectListener}" rendered="#{uiParamBckBeanOrigen!=null}" oncomplete="dlg#{uiParamEntAtt}.hide();"> 
+		<f:attribute name="attBckBeanOrigen" value="#{uiParamBckBeanOrigen}"></f:attribute>
+		</p:commandButton>
+	    		</p:column>
+		
+		</p:dataTable>
+	</div>
+	</h:form>
+		</p:outputPanel>
+   </ui:composition>
