@@ -255,7 +255,7 @@ public class UserSettingsController extends BaseController{
   
     @PostConstruct  
     public void init() {  
-    	 theme ="aristo";  
+    	 theme ="south-street";  
     	if(context!=null && context.getTema()!=null){
     		 theme =context.getTema();  
     	}      
@@ -296,8 +296,7 @@ public class UserSettingsController extends BaseController{
         themes.put("Trontastic", "trontastic");  
         themes.put("UI-Darkness", "ui-darkness");  
         themes.put("UI-Lightness", "ui-lightness");  
-        themes.put("Vader", "vader"); 
-        themes.put("Muisca", "muisca");  
+        themes.put("Vader", "vader");
         
         
 
