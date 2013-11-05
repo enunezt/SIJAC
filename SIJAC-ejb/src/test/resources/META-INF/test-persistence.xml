@@ -26,11 +26,14 @@
          database. Production applications should use a managed datasource. -->
       <!-- The datasource is deployed as WEB-INF/test-ds.xml, 
          you can find it in the source at src/test/resources/test-ds.xml -->
-      <jta-data-source>java:jboss/datasources/Admin-earTestDS</jta-data-source>
+      <jta-data-source>java:jboss/datasources/SIJACDS</jta-data-source>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          <property name="hibernate.show_sql" value="false" />
+          <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+         
       </properties>
    </persistence-unit>
 </persistence>

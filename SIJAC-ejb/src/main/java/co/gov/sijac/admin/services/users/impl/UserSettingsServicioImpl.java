@@ -27,7 +27,6 @@ public class UserSettingsServicioImpl implements UserSettingsServicio{
 	private UsuarioDAO userDAO;
 
 	@Override
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public ResponseDTO consultarUsuario(RequestDTO request)
 			throws ServicioExcepcion {
 		

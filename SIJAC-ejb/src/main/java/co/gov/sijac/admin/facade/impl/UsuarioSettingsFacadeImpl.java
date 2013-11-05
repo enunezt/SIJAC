@@ -51,7 +51,6 @@ public class UsuarioSettingsFacadeImpl implements UsuarioSettingsFacade{
 	}
 
 	@Override
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public ResponseDTO consultarUsuario(RequestDTO request)
 			throws ServicioFacadeExcepcion {
 	

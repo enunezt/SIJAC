@@ -188,7 +188,7 @@ public  abstract class GenericoDAO<T> implements GenericoDAOInterface<T> {
 	return (T) request.getEntidadLocal();
     }
     
-    private List<Object> verificarPaginacion(Query query,RequestDTO request){
+    protected List<Object> verificarPaginacion(Query query,RequestDTO request){
 	
 	if(request.isPagination()){
 	    query.setFirstResult(request.getPaginationDTO().getIncio());

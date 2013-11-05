@@ -35,7 +35,6 @@ public class ImagenServicioImpl implements ImagenServicio/*<Imagen>*/{
 
 	
 	@Override
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public ResponseDTO consultarIdFotoUsuario(RequestDTO request) throws ServicioExcepcion {
 	    Long idUsuario=(Long) request.getParam(EParametro.User);
 		try {

@@ -84,7 +84,7 @@ public class UsuarioDAOImpl extends GenericoDAO<Usuario> implements UsuarioDAO {
 	}
 	
 	@Override
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	//@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public ResponseDTO consultarUsuario(RequestDTO request)
 			throws DAOExcepcion {
 		Usuario user=(Usuario) request.getEntidadLocal();
@@ -132,4 +132,22 @@ public class UsuarioDAOImpl extends GenericoDAO<Usuario> implements UsuarioDAO {
 		
 		
 	}
+	
+	 /**
+	     * se le debe pasar el paraemtro EParametro.EntLocal en el argumento entidad
+	     */
+	    @SuppressWarnings("unchecked")
+	    @Override
+	    public ResponseDTO buscarTodos(RequestDTO clazz) throws DAOExcepcion{
+		//List<Object>		
+		Usuario user=(Usuario) clazz.getEntidadLocal();
+		ResponseDTO response=new ResponseDTO();
+		Class<?> clzz=user.getClass();
+	        String namedQuery="FROM "+clzz.getSimpleName()+" ";  
+	        Query query = getEntityManager().createQuery(namedQuery);
+	        List<Object> list=verificarPaginacion(query,clazz);
+		response.setParam(EParametro.ResultList,list);	
+	        return response;
+	      
+	    }
 }
