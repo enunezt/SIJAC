@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+        <h:form id="formLibro"  prependId="false">
+			<h:panelGrid id="idPnlLibro" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ libroController.libro.fecRegistro}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ libroController.libro.fecCambio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ libroController.libro.estado}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_observaciones}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ libroController.libro.observaciones}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_persona}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ libroController.libro.persona.idPersona}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_junta}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ libroController.libro.junta.idJunta}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ libroController.libro.usuario.idUsuario}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_comisionTrabajo}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ libroController.libro.comisionTrabajo.idCatalogoDetalle}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+		<h:panelGrid columns="1">
+		<p:commandButton action="#{libroController.doConsultar}" value="${msgs.btn_consultar}" update="idTblLibro" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
+	                
+		</h:panelGrid>
+	<div  style="width:100%; overflow: auto;">
+		<p:dataTable id="idTblLibro" value="#{libroController.entidadLst}" binding="#{libroController.tabla}" var="libroTO" rows="10" border="1" >
+		 
+		
+		  			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		</f:facet>		
+		<h:outputText value="#{libroTO.fecRegistro}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		</f:facet>		
+		<h:outputText value="#{libroTO.fecCambio}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		</f:facet>		
+		<h:outputText value="#{libroTO.estado}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_observaciones}" />
+		</f:facet>		
+		<h:outputText value="#{libroTO.observaciones}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_persona}" />
+		</f:facet>		
+		<h:outputText value="#{libroTO.persona.idPersona}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_junta}" />
+		</f:facet>		
+		<h:outputText value="#{libroTO.junta.idJunta}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		</f:facet>		
+		<h:outputText value="#{libroTO.usuario.idUsuario}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_comisionTrabajo}" />
+		</f:facet>		
+		<h:outputText value="#{libroTO.comisionTrabajo.idCatalogoDetalle}"  />
+		</p:column>		
+			
+		<p:column  exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnLibroPrintPDF2"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty libroController.entidadLst}">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblLibro" type="pdf" fileName="reporteLibro" excludeColumns="8"
+	   preProcessor="#{libroController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnLibroPrintXLS2"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty libroController.entidadLst}">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblLibro" type="xls" fileName="reporteLibro" excludeColumns="8"
+	   postProcessor="#{libroController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>
+		
+		</f:facet>	
+		<p:commandButton id="btnSelecTblLibro" style="margin-top: 10px;" icon="ui-icon-circle-check" update="@all,:formLibro,:form#{uiParamEntOrig}"  actionListener="#{libroController.doSelectListener}" rendered="#{uiParamBckBeanOrigen!=null}" oncomplete="dlg#{uiParamEntAtt}.hide();"> 
+		<f:attribute name="attBckBeanOrigen" value="#{uiParamBckBeanOrigen}"></f:attribute>
+		</p:commandButton>
+	    		</p:column>
+		
+		</p:dataTable>
+		</div>	
+	</h:form>	
+</ui:composition>
+	

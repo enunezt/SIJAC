@@ -1,6 +1,7 @@
 package co.gov.sijac.admin.lugares.model.entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -54,6 +55,24 @@ public class Ciudad implements Serializable {
 
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
+	}
+	
+	 @Override
+	    public boolean equals(Object o) {
+		if ((o instanceof Ciudad) && (((Ciudad) o).getIdCiudad() == this.idCiudad))
+		{
+		    return true;
+		} else {
+		    return false;
+		}
+	    }
+	    
+	    @Override
+	    public int hashCode() {
+		int id=this.idCiudad==null?0:this.idCiudad;
+		int hash = 11;
+		hash = 97 * hash + id;
+		return hash;
 	}
 
 }

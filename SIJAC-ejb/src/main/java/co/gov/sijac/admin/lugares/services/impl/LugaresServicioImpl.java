@@ -66,10 +66,13 @@ public class LugaresServicioImpl implements LugaresServicio{
 	try {
 	    
 	    Map<String,Object> parameters=new HashMap<String, Object>();
-	    Pais idPais=new Pais();
-	    idPais.setIdPais((Integer)request.getParam(EParametro.IdEntidad));	    
-		parameters.put("idPais",idPais);
-		
+	    Pais idPais=(Pais) request.getParam(EParametro.Entidad);
+	    if(idPais==null){
+		 idPais=new Pais();
+		    idPais.setIdPais((Integer)request.getParam(EParametro.IdEntidad));	 
+		    }  
+	   
+		parameters.put("idPais",idPais);		
 		request.setParam(EParametro.NamedQuery,"Departamento.findByPais");
 		request.setParam(EParametro.ParemtrosQuery,parameters);
 		return departamentoDAO.findWithNamedQuery(request);
@@ -88,8 +91,11 @@ public class LugaresServicioImpl implements LugaresServicio{
     public ResponseDTO consultarCiudades(RequestDTO request)
 	    throws ServicioExcepcion {
 	try {
-	    Departamento idDepartamento=new Departamento();
-	    idDepartamento.setIdDepartamento((Integer)request.getParam(EParametro.IdEntidad));	    
+	    Departamento idDepartamento=(Departamento) request.getParam(EParametro.Entidad);
+	    if(idDepartamento==null){
+		idDepartamento=new Departamento();
+		  idDepartamento.setIdDepartamento((Integer)request.getParam(EParametro.IdEntidad));
+	    }    
 	    Map<String,Object> parameters=new HashMap<String, Object>();
 		parameters.put("idDepartamento", idDepartamento);
          	request.setParam(EParametro.NamedQuery,"Ciudad.findByDepartamento");

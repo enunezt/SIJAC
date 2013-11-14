@@ -98,5 +98,22 @@ public class Catalogo implements Serializable {
 
 		return catalogoDetalle;
 	}
+	
+	@Override
+	    public boolean equals(Object o) {
+		if ((o instanceof Catalogo)
+			&& (((Catalogo) o).getIdCatalogo() == this.idCatalogo)) {
+		    return true;
+		} else {
+		    return false;
+		}
+	    }
+
+	    @Override
+	    public int hashCode() {
+		int hash = 11;
+		hash = 17 * hash + this.idCatalogo;
+		return hash;
+	    }
 
 }

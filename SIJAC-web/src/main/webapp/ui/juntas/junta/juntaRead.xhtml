@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+      	<h:panelGrid id="idPnlJunta" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_idJunta}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.idJunta}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_codigo}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.codigo}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_barrio}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.barrio}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.fecRegistro}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.fecCambio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_direccion}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.direccion}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_telefonos}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.telefonos}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecResolucion}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.fecResolucion}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_numResolucion}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.numResolucion}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.estado}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_ciudad}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.ciudad.idCiudad}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ juntaController.junta.usuario.idUsuario}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+</ui:composition>
+	

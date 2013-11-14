@@ -22,7 +22,7 @@ public interface LugaresModel<E  extends Exception> {
 	
 	/**
 	 * Consulta el listado de Deparatamentos cons sus repsectivas ciudades
-	 * @param request idPais en EParametro.IdEntidad (Pais) 
+	 * @param request idPais en EParametro.IdEntidad (Pais) ó  Pais en EParametro.Entidad
 	 * @return List<Departamento> en parametro EParametro.ResultList
 	 * @throws E
 	 */	
@@ -31,7 +31,7 @@ public interface LugaresModel<E  extends Exception> {
 	
 	/**
 	 * Consulta el listado de Ciudades
-	 * @param request idDepartamento en EParametro.IdEntidad (Departamento)
+	 * @param request idDepartamento en EParametro.IdEntidad (Departamento) ó  Departamento en EParametro.Entidad
 	 * @return List<Ciudad> en parametro EParametro.ResultList
 	 * @throws E
 	 */

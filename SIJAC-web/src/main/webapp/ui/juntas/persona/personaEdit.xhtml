@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+        <h:form id="formPersona"  prependId="false">
+			<h:panelGrid id="idPnlPersona" columns="2" styleClass="center">
+		 			
+		<h:outputLabel value="${msgs.lbl_nombres}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.nombres}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_apellido1}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.apellido1}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_apellido2}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.apellido2}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_numDocumento}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.numDocumento}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_direccion}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.direccion}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_barrio}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.barrio}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_fecNacimiento}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.fecNacimiento}" converter="javax.faces.DateTime" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.fecCambio}" converter="javax.faces.DateTime" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_email}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.email}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_codigo}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.codigo}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_telefonos}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.telefonos}" />
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_tipoDocumento}" />
+		<h:panelGroup>	
+<p:selectOneMenu value="#{personaController.persona.tipoDocumento}" effect="fade" > 
+<f:selectItem itemLabel="Select One" itemValue="" /> 
+<f:selectItems value="#{personaController.tipoDocumentoItems}" var="tipoDocumento" itemLabel="#{tipoDocumento.codigo - tipoDocumento.valor}" itemValue="#{tipoDocumento}" />
+</p:selectOneMenu> 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_dirCiudad}" />
+		<h:panelGroup>	
+<p:selectOneMenu value="#{personaController.persona.dirCiudad.departamento.pais}" effect="fade" id="paisdirCiudad">
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.paisItems}" var="pais" itemLabel="#{pais.nombre}" itemValue="#{pais}"/>
+<p:ajax listener="#{personaController.paisChange}" />
+</p:selectOneMenu>
+<p:selectOneMenu value="#{personaController.persona.dirCiudad.departamento}" effect="fade" id="deptodirCiudad">
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.deptoItems}" var="depto" itemLabel="#{depto.nombre}" itemValue="#{depto}"/>
+<p:ajax listener="#{personaController.departamentoChange}" />
+</p:selectOneMenu>
+<p:selectOneMenu value="#{personaController.persona.dirCiudad}" effect="fade" id="ciudaddirCiudad" >
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.ciudadItems}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}"/>
+</p:selectOneMenu>
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_nacCiudad}" />
+		<h:panelGroup>	
+<p:selectOneMenu value="#{personaController.persona.nacCiudad.departamento.pais}" effect="fade" id="paisnacCiudad">
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.paisItems}" var="pais" itemLabel="#{pais.nombre}" itemValue="#{pais}"/>
+<p:ajax listener="#{personaController.paisChange}" />
+</p:selectOneMenu>
+<p:selectOneMenu value="#{personaController.persona.nacCiudad.departamento}" effect="fade" id="deptonacCiudad">
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.deptoItems}" var="depto" itemLabel="#{depto.nombre}" itemValue="#{depto}"/>
+<p:ajax listener="#{personaController.departamentoChange}" />
+</p:selectOneMenu>
+<p:selectOneMenu value="#{personaController.persona.nacCiudad}" effect="fade" id="ciudadnacCiudad" >
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.ciudadItems}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}"/>
+</p:selectOneMenu>
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_expedCiudad}" />
+		<h:panelGroup>	
+<p:selectOneMenu value="#{personaController.persona.expedCiudad.departamento.pais}" effect="fade" id="paisexpedCiudad">
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.paisItems}" var="pais" itemLabel="#{pais.nombre}" itemValue="#{pais}"/>
+<p:ajax listener="#{personaController.paisChange}" />
+</p:selectOneMenu>
+<p:selectOneMenu value="#{personaController.persona.expedCiudad.departamento}" effect="fade" id="deptoexpedCiudad">
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.deptoItems}" var="depto" itemLabel="#{depto.nombre}" itemValue="#{depto}"/>
+<p:ajax listener="#{personaController.departamentoChange}" />
+</p:selectOneMenu>
+<p:selectOneMenu value="#{personaController.persona.expedCiudad}" effect="fade" id="ciudadexpedCiudad" >
+<f:selectItem itemLabel="Select One" itemValue="" />
+<f:selectItems value="#{personaController.lugar.ciudadItems}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}"/>
+</p:selectOneMenu>
+ 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_profesion}" />
+		<h:panelGroup>	
+<p:selectOneMenu value="#{personaController.persona.profesion}" effect="fade" > 
+<f:selectItem itemLabel="Select One" itemValue="" /> 
+<f:selectItems value="#{personaController.profesionItems}" var="profesion" itemLabel="#{profesion.codigo - profesion.valor}" itemValue="#{profesion}" />
+</p:selectOneMenu> 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.usuario.usuario}" />
+<p:commandButton title="${msgs.btn_select} ${msgs.lbl_usuario}" process="idPnlPersona" oncomplete="dlgUsuario.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ personaController.persona.fecRegistro}" converter="javax.faces.DateTime" />
+ 	</h:panelGroup>					
+
+		</h:panelGrid>
+				
+		<h:panelGrid columns="4">
+		<p:commandButton action="#{personaController.doCrear}" value="${msgs.btn_crear}" update="idTblPersona" style="margin-top: 10px;" icon="ui-icon-plusthick" ></p:commandButton>
+		<p:commandButton action="#{personaController.doActualizar}" value="${msgs.btn_modificar}" update="idTblPersona" style="margin-top: 10px;" icon="ui-icon-disk" ></p:commandButton>
+		<p:commandButton action="#{personaController.doBorrar}" value="${msgs.btn_eliminar}" update="idTblPersona" style="margin-top: 10px;" icon="ui-icon-minusthick" ></p:commandButton>
+		<p:commandButton action="#{personaController.doConsultar}" value="${msgs.btn_consultar}" update="idTblPersona" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
+	                
+		</h:panelGrid>
+	<div  style="width:100%; overflow: auto;">
+		<p:dataTable id="idTblPersona" value="#{personaController.entidadLst}" binding="#{personaController.tabla}" var="personaTO" rows="10" border="1" >
+		 
+		
+		  			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_idPersona}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.idPersona}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_nombres}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.nombres}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_apellido1}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.apellido1}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_apellido2}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.apellido2}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_numDocumento}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.numDocumento}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_direccion}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.direccion}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_barrio}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.barrio}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecNacimiento}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.fecNacimiento}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.fecCambio}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_email}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.email}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_codigo}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.codigo}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_telefonos}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.telefonos}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_tipoDocumento}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.tipoDocumento.idCatalogoDetalle}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_dirCiudad}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.dirCiudad.idCiudad}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_nacCiudad}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.nacCiudad.idCiudad}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_expedCiudad}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.expedCiudad.idCiudad}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_profesion}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.profesion.idCatalogoDetalle}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.usuario.idUsuario}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		</f:facet>		
+		<h:outputText value="#{personaTO.fecRegistro}"  />
+		</p:column>		
+			
+		<p:column   exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnPersonaPrintPDF2"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty personaController.entidadLst}">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblPersona" type="pdf" fileName="reportePersona" 
+	   preProcessor="#{personaController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnPersonaPrintXLS2"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty personaController.entidadLst}">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblPersona" type="xls" fileName="reportePersona" 
+	   postProcessor="#{personaController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>
+		
+		</f:facet>	
+		<p:commandButton id="btnEditTblPersona" action="#{personaController.doEditar}" style="margin-top: 10px;" icon="ui-icon-pencil" process="@all,:formPersona" update="@all,:formPersona:idPnlPersona" ></p:commandButton>
+		
+	    </p:column>		
+		</p:dataTable>
+		</div>	
+	</h:form>
+	 			
+	<p:dialog header="${msgs.lbl_usuario}" showEffect="fade" hideEffect="fade" widgetVar="dlgUsuario" modal="false">
+    <h:panelGrid id="dplyPersonaUsuario" columns="1" style="margin: 10px;"> 
+    <ui:include  src="../../../pgadmin/usuario/usuarioSelect.xhtml"  >
+    <ui:param name="uiParamBckBeanOrigen" value="personaController.persona.usuario" />
+    <ui:param name="uiParamEntAtt" value="Usuario" />
+    <ui:param name="uiParamEntOrig" value="Persona" />
+    </ui:include>       
+    </h:panelGrid>
+     <f:facet name="footer">
+                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
+                   
+                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgUsuario.hide()" icon="ui-icon-closethick"/>
+                </h:panelGroup>
+            </f:facet>
+    </p:dialog>
+	 			
+	
+
+</ui:composition>
+	

@@ -10,11 +10,11 @@
       
         <h:form id="formUsuario"  prependId="false">
 			 <p:messages autoUpdate="true"></p:messages>
-			<h:panelGrid id="idPnlUsuario" columns="4" >
+	<h:panelGrid id="idPnlUsuario" columns="4" >
 		 		
-		<h:outputLabel value="${msgs.lbl_Usuario}" />
+		<h:outputLabel value="${msgs.lbl_usuario}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ usuarioController.usuario.usuario}" label="${msgs.lbl_Usuario}" required="#{param['validarForm']=='true'}" />
+		<p:inputText value="#{ usuarioController.usuario.usuario}" label="${msgs.lbl_usuario}" required="#{param['validarForm']=='true'}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_Clave}" />
@@ -22,7 +22,7 @@
 		<p:inputText value="#{ usuarioController.usuario.clave}" label="${msgs.lbl_Clave}"  required="#{param['validarForm']=='true'}"/>
 		</h:panelGroup>					
 		 			
-		
+	</h:panelGrid>	
 		<h:outputLabel value="${msgs.lbl_Perfiles}" />
 		<h:panelGroup>	 <p:pickList id="perfilesPkl" value="#{usuarioController.perfiles}"   
                 var="perfilPkl"  disabled="true"
@@ -52,7 +52,7 @@
 		 			
 		<p:column >
 		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_Usuario}" />
+		<h:outputLabel value="${msgs.lbl_usuario}" />
 		</f:facet>		
 		<h:outputText value="#{usuarioTO.usuario}"  />
 		</p:column>		
@@ -65,7 +65,7 @@
 		</p:column>			
 		<p:column >
 		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_FecRegistro}" />
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
 		</f:facet>		
 		<h:outputText value="#{usuarioTO.fecRegistro}"  />
 		</p:column>		

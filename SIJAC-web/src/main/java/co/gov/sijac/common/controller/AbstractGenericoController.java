@@ -36,6 +36,8 @@ public abstract class AbstractGenericoController<ENT> extends BaseController{
     public abstract GenericoFacadeInterface<ENT> getGenericoFacade();
     
     protected List<ENT> entidadLst;
+    
+    protected static Integer ID_PAIS_COL=52;
 
   /*  @Inject
     private MemberRegistration memberRegistration;*/

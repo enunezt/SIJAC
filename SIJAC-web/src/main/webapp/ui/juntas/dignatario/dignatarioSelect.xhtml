@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+        <h:form id="formDignatario"  prependId="false">
+			<h:panelGrid id="idPnlDignatario" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_fecInicio}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.id.fecInicio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecFin}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.id.fecFin}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.fecRegistro}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.fecCambio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.estado}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_junta}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.junta.idJunta}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_persona}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.persona.idPersona}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.usuario.idUsuario}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_tipoDignatario}" />
+		<h:panelGroup>	
+		<p:inputText value="#{ dignatarioController.dignatario.tipoDignatario.idCatalogoDetalle}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+		<h:panelGrid columns="1">
+		<p:commandButton action="#{dignatarioController.doConsultar}" value="${msgs.btn_consultar}" update="idTblDignatario" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
+	                
+		</h:panelGrid>
+	<div  style="width:100%; overflow: auto;">
+		<p:dataTable id="idTblDignatario" value="#{dignatarioController.entidadLst}" binding="#{dignatarioController.tabla}" var="dignatarioTO" rows="10" border="1" >
+		 
+		
+		  			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecInicio}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.id.fecInicio}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecFin}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.id.fecFin}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.fecRegistro}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.fecCambio}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.estado}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_junta}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.junta.idJunta}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_persona}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.persona.idPersona}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.usuario.idUsuario}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_tipoDignatario}" />
+		</f:facet>		
+		<h:outputText value="#{dignatarioTO.tipoDignatario.idCatalogoDetalle}"  />
+		</p:column>		
+			
+		<p:column  exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnDignatarioPrintPDF2"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty dignatarioController.entidadLst}">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblDignatario" type="pdf" fileName="reporteDignatario" excludeColumns="9"
+	   preProcessor="#{dignatarioController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnDignatarioPrintXLS2"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty dignatarioController.entidadLst}">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblDignatario" type="xls" fileName="reporteDignatario" excludeColumns="9"
+	   postProcessor="#{dignatarioController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>
+		
+		</f:facet>	
+		<p:commandButton id="btnSelecTblDignatario" style="margin-top: 10px;" icon="ui-icon-circle-check" update="@all,:formDignatario,:form#{uiParamEntOrig}"  actionListener="#{dignatarioController.doSelectListener}" rendered="#{uiParamBckBeanOrigen!=null}" oncomplete="dlg#{uiParamEntAtt}.hide();"> 
+		<f:attribute name="attBckBeanOrigen" value="#{uiParamBckBeanOrigen}"></f:attribute>
+		</p:commandButton>
+	    		</p:column>
+		
+		</p:dataTable>
+		</div>	
+	</h:form>	
+</ui:composition>
+	

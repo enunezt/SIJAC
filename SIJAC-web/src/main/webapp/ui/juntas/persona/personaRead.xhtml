@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+      	<h:panelGrid id="idPnlPersona" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_idPersona}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.idPersona}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_nombres}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.nombres}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_apellido1}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.apellido1}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_apellido2}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.apellido2}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_numDocumento}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.numDocumento}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_direccion}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.direccion}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_barrio}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.barrio}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecNacimiento}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.fecNacimiento}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.fecCambio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_email}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.email}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_codigo}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.codigo}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_telefonos}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.telefonos}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_tipoDocumento}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.tipoDocumento.idCatalogoDetalle}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_dirCiudad}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.dirCiudad.idCiudad}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_nacCiudad}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.nacCiudad.idCiudad}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_expedCiudad}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.expedCiudad.idCiudad}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_profesion}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.profesion.idCatalogoDetalle}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.usuario.idUsuario}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ personaController.persona.fecRegistro}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+</ui:composition>
+	

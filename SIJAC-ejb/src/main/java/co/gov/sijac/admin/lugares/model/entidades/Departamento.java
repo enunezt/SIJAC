@@ -90,5 +90,23 @@ public class Departamento implements Serializable {
 	public void setIdDepartamento(Integer idDepartamento) {
 	    this.idDepartamento = idDepartamento;
 	}
+	
+	 @Override
+	    public boolean equals(Object o) {
+		if ((o instanceof Departamento) && (((Departamento) o).getIdDepartamento() == this.idDepartamento))
+		{
+		    return true;
+		} else {
+		    return false;
+		}
+	    }
+	    
+	    @Override
+	    public int hashCode() {
+		int id=this.idDepartamento==null?0:this.idDepartamento;
+		int hash = 19;
+		hash = 97 * hash + id;
+		return hash;
+	}
 
 }

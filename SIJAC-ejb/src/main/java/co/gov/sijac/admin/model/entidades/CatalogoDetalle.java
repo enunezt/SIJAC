@@ -106,5 +106,22 @@ public class CatalogoDetalle implements Serializable {
 	public void setCatalogo(Catalogo catalogo) {
 		this.catalogo = catalogo;
 	}
+	
+    @Override
+    public boolean equals(Object o) {
+	if ((o instanceof CatalogoDetalle)
+		&& (((CatalogoDetalle) o).getIdCatalogoDetalle() == this.idCatalogoDetalle)) {
+	    return true;
+	} else {
+	    return false;
+	}
+    }
+
+    @Override
+    public int hashCode() {
+	int hash = 11;
+	hash = 17 * hash + this.idCatalogoDetalle;
+	return hash;
+    }
 
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+      	<h:panelGrid id="idPnlLibro" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ libroController.libro.fecRegistro}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ libroController.libro.fecCambio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ libroController.libro.estado}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_observaciones}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ libroController.libro.observaciones}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_persona}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ libroController.libro.persona.idPersona}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_junta}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ libroController.libro.junta.idJunta}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ libroController.libro.usuario.idUsuario}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_comisionTrabajo}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ libroController.libro.comisionTrabajo.idCatalogoDetalle}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+</ui:composition>
+	

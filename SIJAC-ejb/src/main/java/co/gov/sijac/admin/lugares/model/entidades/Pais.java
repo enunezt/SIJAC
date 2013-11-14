@@ -25,11 +25,26 @@ public class Pais implements Serializable {
 
 	public Pais() {
 	}
-
-
 	@Column(name="iso_num")
 	public Integer getIsoNum() {
 		return this.isoNum;
+	}
+
+	/**
+	 * @param idPais
+	 * @param isoNum
+	 * @param iso2
+	 * @param iso3
+	 * @param nombre
+	 */
+	public Pais(Integer idPais, Integer isoNum, String iso2, String iso3,
+		String nombre) {
+	    super();
+	    this.idPais = idPais;
+	    this.isoNum = isoNum;
+	    this.iso2 = iso2;
+	    this.iso3 = iso3;
+	    this.nombre = nombre;
 	}
 
 	public void setIsoNum(Integer isoNum) {
@@ -110,4 +125,22 @@ public class Pais implements Serializable {
 	    this.idPais = idPais;
 	}
 
+	
+    @Override
+    public boolean equals(Object o) {
+	if ((o instanceof Pais) && (((Pais) o).getIdPais() == this.idPais))
+	{
+	    return true;
+	} else {
+	    return false;
+	}
+    }
+    
+    @Override
+    public int hashCode() {
+	int id=this.idPais==null?0:this.idPais;
+	int hash = 7;
+	hash = 97 * hash + id;
+	return hash;
+}
 }

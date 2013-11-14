@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+      	<h:panelGrid id="idPnlDignatario" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_fecInicio}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.id.fecInicio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecFin}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.id.fecFin}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.fecRegistro}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_fecCambio}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.fecCambio}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.estado}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_junta}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.junta.idJunta}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_persona}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.persona.idPersona}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_usuario}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.usuario.idUsuario}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_tipoDignatario}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ dignatarioController.dignatario.tipoDignatario.idCatalogoDetalle}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+</ui:composition>
+	

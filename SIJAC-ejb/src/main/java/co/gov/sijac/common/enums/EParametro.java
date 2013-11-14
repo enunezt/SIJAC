@@ -34,7 +34,8 @@ public enum EParametro implements IParametro {
 	Catalogo("EntidadCatalogo"),
 	Imagen("EntidadImagen"),
 	IdEntidad("IdEntidad"),
-	ImagenTipo("ImagenTipo");//, OTRO(),....;
+	ImagenTipo("ImagenTipo"),
+	Entidad("EntidadLocal");//, OTRO(),....;
 
     private final String name; // in meters
     EParametro(String name) {

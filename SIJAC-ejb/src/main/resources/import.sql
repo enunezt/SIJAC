@@ -1,3 +1,5 @@
+--
+--
 -- JBoss, Home of Professional Open Source
 -- Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
 -- contributors by the @authors tag. See the copyright.txt in the
@@ -15,7 +17,7 @@
 --
 
 -- You can use this file to load seed data into the database using SQL statements
-insert into Registrant(id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212');
+insert into Registrant(id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212')
 
 INSERT INTO Usuario(id_usuario ,usuario,clave,fec_registro,fec_cambio) VALUES (1,'Admin','1234',current_date,current_date);
 INSERT INTO Usuario(id_usuario ,usuario,clave,fec_registro,fec_cambio) values (2,'Basico','1234',current_date,current_date);
@@ -35,7 +37,7 @@ INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (2,'/pgadmin/pe
 INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (3,'/pgadmin/opcion/gestionarOpcion.jsf',6,1,NULL);
 INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (4,'/pgadmin/menu/gestionarMenu.jsf',7,1,NULL);
 INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (5,'/capture/gestionarImagen.jsf',8,1,NULL);
---INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (6,'/pgadmin/catalogo/gestionarCatalogo.jsf',9,1,NULL);
+INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (6,'/pgadmin/catalogo/gestionarCatalogo.jsf',9,1,NULL);
 
 INSERT INTO Perfil(id_perfil,nombre,descripcion,fec_cambio) VALUES (1,'Super Usuario','Administrador total del sistema',current_date);
 INSERT INTO Perfil(id_perfil,nombre,descripcion,fec_cambio) values (2,'Usuaro Basico','Usuaro Basico',current_date);
@@ -46,6 +48,7 @@ INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,2,0);
 INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,3,0);
 INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,4,0);
 INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,5,0);
+INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,6,0);
 --INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,5,0);
 --INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,6,0);
 --INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,7,0);
@@ -56,51 +59,81 @@ INSERT INTO perfil_usuario(id_usuario,id_perfil) VALUES (1,1);
 INSERT INTO perfil_usuario(id_usuario,id_perfil) VALUES (2,2);
 --INSERT INTO perfil_usuario(id_usuario,id_perfil) VALUES (3,3);
 
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (1, 4, 'AF', 'AFG', 'AFGANISTÁN');
+--Script para el modulo Juntas
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (10,'Juntas','Gestion de Juntas',NULL,NULL);
+
+
+
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (11,'Persona','Gestion de Persona',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (12,'Junta','Gestion de Junta',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (13,'Libro','Gestion de Libro',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (14,'Dignatario','Gestion de Dignatario',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (15,'Comite','Gestion de Comite',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (16,'PagosAfiliado','Gestion de PagosAfiliado',10,NULL);
+
+
+INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (7,'/ui/juntas/persona/gestionarPersona.jsf',11,1,NULL);
+INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (8,'/ui/juntas/junta/gestionarJunta.jsf',12,1,NULL);
+INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (9,'/ui/juntas/libro/gestionarLibro.jsf',13,1,NULL);
+INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (10,'/ui/juntas/dignatario/gestionarDignatario.jsf',14,1,NULL);
+INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (11,'/ui/juntas/comite/gestionarComite.jsf',15,1,NULL);
+INSERT INTO Opcion(id_opcion,url,id_menu,tipo,fec_cambio) values (12,'/ui/juntas/pagosAfiliado/gestionarPagosAfiliado.jsf',16,1,NULL);
+
+
+INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,7,0);
+INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,8,0);
+INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,9,0);
+INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,10,0);
+INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,11,0);
+INSERT INTO PERFIL_OPCION(id_perfil,id_opcion,nivel) VALUES (1,12,0);
+
+
+--script lugares--
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (1, 4, 'AF', 'AFG', 'AFGANIST�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (2, 248, 'AX', 'ALA', 'ISLAS GLAND');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (3, 8, 'AL', 'ALB', 'ALBANIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (4, 276, 'DE', 'DEU', 'ALEMANIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (5, 20, 'AD', 'AND', 'ANDORRA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (6, 24, 'AO', 'AGO', 'ANGOLA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (7, 660, 'AI', 'AIA', 'ANGUILLA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (8, 10, 'AQ', 'ATA', 'ANTÁRTIDA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (8, 10, 'AQ', 'ATA', 'ANT�RTIDA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (9, 28, 'AG', 'ATG', 'ANTIGUA Y BARBUDA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (10, 530, 'AN', 'ANT', 'ANTILLAS HOLANDESAS');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (11, 682, 'SA', 'SAU', 'ARABIA SAUDÍ');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (11, 682, 'SA', 'SAU', 'ARABIA SAUD�');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (12, 12, 'DZ', 'DZA', 'ARGELIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (13, 32, 'AR', 'ARG', 'ARGENTINA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (14, 51, 'AM', 'ARM', 'ARMENIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (15, 533, 'AW', 'ABW', 'ARUBA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (16, 36, 'AU', 'AUS', 'AUSTRALIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (17, 40, 'AT', 'AUT', 'AUSTRIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (18, 31, 'AZ', 'AZE', 'AZERBAIYÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (18, 31, 'AZ', 'AZE', 'AZERBAIY�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (19, 44, 'BS', 'BHS', 'BAHAMAS');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (20, 48, 'BH', 'BHR', 'BAHRÉIN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (20, 48, 'BH', 'BHR', 'BAHR�IN');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (21, 50, 'BD', 'BGD', 'BANGLADESH');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (22, 52, 'BB', 'BRB', 'BARBADOS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (23, 112, 'BY', 'BLR', 'BIELORRUSIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (24, 56, 'BE', 'BEL', 'BÉLGICA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (24, 56, 'BE', 'BEL', 'B�LGICA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (25, 84, 'BZ', 'BLZ', 'BELICE');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (26, 204, 'BJ', 'BEN', 'BENIN');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (27, 60, 'BM', 'BMU', 'BERMUDAS');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (28, 64, 'BT', 'BTN', 'BHUTÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (28, 64, 'BT', 'BTN', 'BHUT�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (29, 68, 'BO', 'BOL', 'BOLIVIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (30, 70, 'BA', 'BIH', 'BOSNIA Y HERZEGOVINA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (31, 72, 'BW', 'BWA', 'BOTSUANA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (32, 74, 'BV', 'BVT', 'ISLA BOUVET');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (33, 76, 'BR', 'BRA', 'BRASIL');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (34, 96, 'BN', 'BRN', 'BRUNÉI');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (34, 96, 'BN', 'BRN', 'BRUN�I');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (35, 100, 'BG', 'BGR', 'BULGARIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (36, 854, 'BF', 'BFA', 'BURKINA FASO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (37, 108, 'BI', 'BDI', 'BURUNDI');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (38, 132, 'CV', 'CPV', 'CABO VERDE');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (39, 136, 'KY', 'CYM', 'ISLAS CAIMÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (39, 136, 'KY', 'CYM', 'ISLAS CAIM�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (40, 116, 'KH', 'KHM', 'CAMBOYA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (41, 120, 'CM', 'CMR', 'CAMERÚN');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (42, 124, 'CA', 'CAN', 'CANADÁ');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (43, 140, 'CF', 'CAF', 'REPÚBLICA CENTROAFRICANA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (41, 120, 'CM', 'CMR', 'CAMER�N');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (42, 124, 'CA', 'CAN', 'CANAD�');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (43, 140, 'CF', 'CAF', 'REP�BLICA CENTROAFRICANA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (44, 148, 'TD', 'TCD', 'CHAD');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (45, 203, 'CZ', 'CZE', 'REPÚBLICA CHECA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (45, 203, 'CZ', 'CZE', 'REP�BLICA CHECA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (46, 152, 'CL', 'CHL', 'CHILE');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (47, 156, 'CN', 'CHN', 'CHINA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (48, 196, 'CY', 'CYP', 'CHIPRE');
@@ -109,7 +142,7 @@ INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (50, 336, 'VA', 'VA
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (51, 166, 'CC', 'CCK', 'ISLAS COCOS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (52, 170, 'CO', 'COL', 'COLOMBIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (53, 174, 'KM', 'COM', 'COMORAS');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (54, 180, 'CD', 'COD', 'REPÚBLICA DEMOCRÁTICA DEL CONGO');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (54, 180, 'CD', 'COD', 'REP�BLICA DEMOCR�TICA DEL CONGO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (55, 178, 'CG', 'COG', 'CONGO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (56, 184, 'CK', 'COK', 'ISLAS COOK');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (57, 408, 'KP', 'PRK', 'COREA DEL NORTE');
@@ -120,25 +153,25 @@ INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (61, 191, 'HR', 'HR
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (62, 192, 'CU', 'CUB', 'CUBA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (63, 208, 'DK', 'DNK', 'DINAMARCA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (64, 212, 'DM', 'DMA', 'DOMINICA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (65, 214, 'DO', 'DOM', 'REPÚBLICA DOMINICANA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (65, 214, 'DO', 'DOM', 'REP�BLICA DOMINICANA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (66, 218, 'EC', 'ECU', 'ECUADOR');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (67, 818, 'EG', 'EGY', 'EGIPTO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (68, 222, 'SV', 'SLV', 'EL SALVADOR');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (69, 784, 'AE', 'ARE', 'EMIRATOS ÁRABES UNIDOS');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (69, 784, 'AE', 'ARE', 'EMIRATOS �RABES UNIDOS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (70, 232, 'ER', 'ERI', 'ERITREA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (71, 703, 'SK', 'SVK', 'ESLOVAQUIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (72, 705, 'SI', 'SVN', 'ESLOVENIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (73, 724, 'ES', 'ESP', 'ESPAÑA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (73, 724, 'ES', 'ESP', 'ESPA�A');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (74, 581, 'UM', 'UMI', 'ISLAS ULTRAMARINAS DE ESTADOS UNIDOS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (75, 840, 'US', 'USA', 'ESTADOS UNIDOS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (76, 233, 'EE', 'EST', 'ESTONIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (77, 231, 'ET', 'ETH', 'ETIOPÍA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (77, 231, 'ET', 'ETH', 'ETIOP�A');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (78, 234, 'FO', 'FRO', 'ISLAS FEROE');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (79, 608, 'PH', 'PHL', 'FILIPINAS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (80, 246, 'FI', 'FIN', 'FINLANDIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (81, 242, 'FJ', 'FJI', 'FIYI');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (82, 250, 'FR', 'FRA', 'FRANCIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (83, 266, 'GA', 'GAB', 'GABÓN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (83, 266, 'GA', 'GAB', 'GAB�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (84, 270, 'GM', 'GMB', 'GAMBIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (85, 268, 'GE', 'GEO', 'GEORGIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (86, 239, 'GS', 'SGS', 'ISLAS GEORGIAS DEL SUR Y SANDWICH DEL SUR');
@@ -155,31 +188,31 @@ INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (96, 324, 'GN', 'GI
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (97, 226, 'GQ', 'GNQ', 'GUINEA ECUATORIAL');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (98, 624, 'GW', 'GNB', 'GUINEA-BISSAU');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (99, 328, 'GY', 'GUY', 'GUYANA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (100, 332, 'HT', 'HTI', 'HAITÍ');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (100, 332, 'HT', 'HTI', 'HAIT�');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (101, 334, 'HM', 'HMD', 'ISLAS HEARD Y MCDONALD');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (102, 340, 'HN', 'HND', 'HONDURAS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (103, 344, 'HK', 'HKG', 'HONG KONG');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (104, 348, 'HU', 'HUN', 'HUNGRÍA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (104, 348, 'HU', 'HUN', 'HUNGR�A');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (105, 356, 'IN', 'IND', 'INDIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (106, 360, 'ID', 'IDN', 'INDONESIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (107, 364, 'IR', 'IRN', 'IRÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (107, 364, 'IR', 'IRN', 'IR�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (108, 368, 'IQ', 'IRQ', 'IRAQ');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (109, 372, 'IE', 'IRL', 'IRLANDA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (110, 352, 'IS', 'ISL', 'ISLANDIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (111, 376, 'IL', 'ISR', 'ISRAEL');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (112, 380, 'IT', 'ITA', 'ITALIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (113, 388, 'JM', 'JAM', 'JAMAICA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (114, 392, 'JP', 'JPN', 'JAPÓN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (114, 392, 'JP', 'JPN', 'JAP�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (115, 400, 'JO', 'JOR', 'JORDANIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (116, 398, 'KZ', 'KAZ', 'KAZAJSTÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (116, 398, 'KZ', 'KAZ', 'KAZAJST�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (117, 404, 'KE', 'KEN', 'KENIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (118, 417, 'KG', 'KGZ', 'KIRGUISTÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (118, 417, 'KG', 'KGZ', 'KIRGUIST�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (119, 296, 'KI', 'KIR', 'KIRIBATI');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (120, 414, 'KW', 'KWT', 'KUWAIT');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (121, 418, 'LA', 'LAO', 'LAOS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (122, 426, 'LS', 'LSO', 'LESOTHO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (123, 428, 'LV', 'LVA', 'LETONIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (124, 422, 'LB', 'LBN', 'LÍBANO');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (124, 422, 'LB', 'LBN', 'L�BANO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (125, 430, 'LR', 'LBR', 'LIBERIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (126, 434, 'LY', 'LBY', 'LIBIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (127, 438, 'LI', 'LIE', 'LIECHTENSTEIN');
@@ -191,7 +224,7 @@ INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (132, 450, 'MG', 'M
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (133, 458, 'MY', 'MYS', 'MALASIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (134, 454, 'MW', 'MWI', 'MALAWI');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (135, 462, 'MV', 'MDV', 'MALDIVAS');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (136, 466, 'ML', 'MLI', 'MALÍ');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (136, 466, 'ML', 'MLI', 'MAL�');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (137, 470, 'MT', 'MLT', 'MALTA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (138, 238, 'FK', 'FLK', 'ISLAS MALVINAS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (139, 580, 'MP', 'MNP', 'ISLAS MARIANAS DEL NORTE');
@@ -201,10 +234,10 @@ INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (142, 474, 'MQ', 'M
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (143, 480, 'MU', 'MUS', 'MAURICIO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (144, 478, 'MR', 'MRT', 'MAURITANIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (145, 175, 'YT', 'MYT', 'MAYOTTE');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (146, 484, 'MX', 'MEX', 'MÉXICO');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (146, 484, 'MX', 'MEX', 'M�XICO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (147, 583, 'FM', 'FSM', 'MICRONESIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (148, 498, 'MD', 'MDA', 'MOLDAVIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (149, 492, 'MC', 'MCO', 'MÓNACO');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (149, 492, 'MC', 'MCO', 'M�NACO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (150, 496, 'MN', 'MNG', 'MONGOLIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (151, 500, 'MS', 'MSR', 'MONTSERRAT');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (152, 508, 'MZ', 'MOZ', 'MOZAMBIQUE');
@@ -213,22 +246,22 @@ INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (154, 516, 'NA', 'N
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (155, 520, 'NR', 'NRU', 'NAURU');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (156, 524, 'NP', 'NPL', 'NEPAL');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (157, 558, 'NI', 'NIC', 'NICARAGUA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (158, 562, 'NE', 'NER', 'NÍGER');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (158, 562, 'NE', 'NER', 'N�GER');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (159, 566, 'NG', 'NGA', 'NIGERIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (160, 570, 'NU', 'NIU', 'NIUE');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (161, 574, 'NF', 'NFK', 'ISLA NORFOLK');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (162, 578, 'NO', 'NOR', 'NORUEGA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (163, 540, 'NC', 'NCL', 'NUEVA CALEDONIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (164, 554, 'NZ', 'NZL', 'NUEVA ZELANDA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (165, 512, 'OM', 'OMN', 'OMÁN');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (166, 528, 'NL', 'NLD', 'PAÍSES BAJOS');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (167, 586, 'PK', 'PAK', 'PAKISTÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (165, 512, 'OM', 'OMN', 'OM�N');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (166, 528, 'NL', 'NLD', 'PA�SES BAJOS');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (167, 586, 'PK', 'PAK', 'PAKIST�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (168, 585, 'PW', 'PLW', 'PALAU');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (169, 275, 'PS', 'PSE', 'PALESTINA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (170, 591, 'PA', 'PAN', 'PANAMÁ');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (171, 598, 'PG', 'PNG', 'PAPÚA NUEVA GUINEA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (170, 591, 'PA', 'PAN', 'PANAM�');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (171, 598, 'PG', 'PNG', 'PAP�A NUEVA GUINEA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (172, 600, 'PY', 'PRY', 'PARAGUAY');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (173, 604, 'PE', 'PER', 'PERÚ');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (173, 604, 'PE', 'PER', 'PER�');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (174, 612, 'PN', 'PCN', 'ISLAS PITCAIRN');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (175, 258, 'PF', 'PYF', 'POLINESIA FRANCESA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (176, 616, 'PL', 'POL', 'POLONIA');
@@ -236,21 +269,21 @@ INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (177, 620, 'PT', 'P
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (178, 630, 'PR', 'PRI', 'PUERTO RICO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (179, 634, 'QA', 'QAT', 'QATAR');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (180, 826, 'GB', 'GBR', 'REINO UNIDO');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (181, 638, 'RE', 'REU', 'REUNIÓN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (181, 638, 'RE', 'REU', 'REUNI�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (182, 646, 'RW', 'RWA', 'RUANDA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (183, 642, 'RO', 'ROU', 'RUMANIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (184, 643, 'RU', 'RUS', 'RUSIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (185, 732, 'EH', 'ESH', 'SAHARA OCCIDENTAL');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (186, 90, 'SB', 'SLB', 'ISLAS SALOMÓN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (186, 90, 'SB', 'SLB', 'ISLAS SALOM�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (187, 882, 'WS', 'WSM', 'SAMOA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (188, 16, 'AS', 'ASM', 'SAMOA AMERICANA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (189, 659, 'KN', 'KNA', 'SAN CRISTÓBAL Y NEVIS');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (189, 659, 'KN', 'KNA', 'SAN CRIST�BAL Y NEVIS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (190, 674, 'SM', 'SMR', 'SAN MARINO');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (191, 666, 'PM', 'SPM', 'SAN PEDRO Y MIQUELÓN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (191, 666, 'PM', 'SPM', 'SAN PEDRO Y MIQUEL�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (192, 670, 'VC', 'VCT', 'SAN VICENTE Y LAS GRANADINAS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (193, 654, 'SH', 'SHN', 'SANTA HELENA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (194, 662, 'LC', 'LCA', 'SANTA LUCÍA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (195, 678, 'ST', 'STP', 'SANTO TOMÉ Y PRÍNCIPE');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (194, 662, 'LC', 'LCA', 'SANTA LUC�A');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (195, 678, 'ST', 'STP', 'SANTO TOM� Y PR�NCIPE');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (196, 686, 'SN', 'SEN', 'SENEGAL');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (197, 891, 'CS', 'SCG', 'SERBIA Y MONTENEGRO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (198, 690, 'SC', 'SYC', 'SEYCHELLES');
@@ -260,37 +293,37 @@ INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (201, 760, 'SY', 'S
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (202, 706, 'SO', 'SOM', 'SOMALIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (203, 144, 'LK', 'LKA', 'SRI LANKA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (204, 748, 'SZ', 'SWZ', 'SUAZILANDIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (205, 710, 'ZA', 'ZAF', 'SUDÁFRICA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (206, 736, 'SD', 'SDN', 'SUDÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (205, 710, 'ZA', 'ZAF', 'SUD�FRICA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (206, 736, 'SD', 'SDN', 'SUD�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (207, 752, 'SE', 'SWE', 'SUECIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (208, 756, 'CH', 'CHE', 'SUIZA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (209, 740, 'SR', 'SUR', 'SURINAM');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (210, 744, 'SJ', 'SJM', 'SVALBARD Y JAN MAYEN');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (211, 764, 'TH', 'THA', 'TAILANDIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (212, 158, 'TW', 'TWN', 'TAIWÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (212, 158, 'TW', 'TWN', 'TAIW�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (213, 834, 'TZ', 'TZA', 'TANZANIA');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (214, 762, 'TJ', 'TJK', 'TAYIKISTÁN');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (215, 86, 'IO', 'IOT', 'TERRITORIO BRITÁNICO DEL OCÉANO ÍNDICO');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (214, 762, 'TJ', 'TJK', 'TAYIKIST�N');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (215, 86, 'IO', 'IOT', 'TERRITORIO BRIT�NICO DEL OC�ANO �NDICO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (216, 260, 'TF', 'ATF', 'TERRITORIOS AUSTRALES FRANCESES');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (217, 626, 'TL', 'TLS', 'TIMOR ORIENTAL');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (218, 768, 'TG', 'TGO', 'TOGO');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (219, 772, 'TK', 'TKL', 'TOKELAU');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (220, 776, 'TO', 'TON', 'TONGA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (221, 780, 'TT', 'TTO', 'TRINIDAD Y TOBAGO');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (222, 788, 'TN', 'TUN', 'TÚNEZ');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (222, 788, 'TN', 'TUN', 'T�NEZ');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (223, 796, 'TC', 'TCA', 'ISLAS TURCAS Y CAICOS');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (224, 795, 'TM', 'TKM', 'TURKMENISTÁN');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (225, 792, 'TR', 'TUR', 'TURQUÍA');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (224, 795, 'TM', 'TKM', 'TURKMENIST�N');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (225, 792, 'TR', 'TUR', 'TURQU�A');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (226, 798, 'TV', 'TUV', 'TUVALU');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (227, 804, 'UA', 'UKR', 'UCRANIA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (228, 800, 'UG', 'UGA', 'UGANDA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (229, 858, 'UY', 'URY', 'URUGUAY');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (230, 860, 'UZ', 'UZB', 'UZBEKISTÁN');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (230, 860, 'UZ', 'UZB', 'UZBEKIST�N');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (231, 548, 'VU', 'VUT', 'VANUATU');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (232, 862, 'VE', 'VEN', 'VENEZUELA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (233, 704, 'VN', 'VNM', 'VIETNAM');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (234, 92, 'VG', 'VGB', 'ISLAS VÍRGENES BRITÁNICAS');
-INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (235, 850, 'VI', 'VIR', 'ISLAS VÍRGENES DE LOS ESTADOS UNIDOS');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (234, 92, 'VG', 'VGB', 'ISLAS V�RGENES BRIT�NICAS');
+INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (235, 850, 'VI', 'VIR', 'ISLAS V�RGENES DE LOS ESTADOS UNIDOS');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (236, 876, 'WF', 'WLF', 'WALLIS Y FUTUNA');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (237, 887, 'YE', 'YEM', 'YEMEN');
 INSERT INTO paises(id_pais,iso_num,iso2, iso3,nombre) VALUES (238, 262, 'DJ', 'DJI', 'YIBUTI');
