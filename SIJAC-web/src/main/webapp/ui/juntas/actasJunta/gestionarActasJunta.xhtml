@@ -7,11 +7,12 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:my="http://java.sun.com/jsf/composite/components">
     <ui:define name="content">
-    <p:growl id="growlOpcion"  sticky="true" autoUpdate="true" showSummary="true"/> 
- 		<f:view> 		
- 		<p:panel header="${msgs.lbl_opcion}">
- 		<ui:include src="opcionEdit.xhtml"></ui:include>
- 		</p:panel>
+	<p:growl id="growlActasJunta"  sticky="true" autoUpdate="true" showSummary="true"/> 
+ 		<f:view>
+ 		<p:panel header="${msgs.lbl_actasJunta}">
+    		<ui:include src="actasJuntaEdit.xhtml"></ui:include>
+    		</p:panel>
  		</f:view>
 		</ui:define>	
-	</ui:composition>
+</ui:composition>
+	

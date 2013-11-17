@@ -58,9 +58,9 @@
 		<p:outputText value="#{ personaController.persona.email}" />
 		</h:panelGroup>					
 		 			
-		<h:outputLabel value="${msgs.lbl_codigo}" />
+		<h:outputLabel value="${msgs.lbl_estado}" />
 		<h:panelGroup>	
-		<p:outputText value="#{ personaController.persona.codigo}" />
+		<p:outputText value="#{ personaController.persona.estado}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_telefonos}" />
@@ -70,32 +70,32 @@
 		 			
 		<h:outputLabel value="${msgs.lbl_tipoDocumento}" />
 		<h:panelGroup>	
-		<p:outputText value="#{ personaController.persona.tipoDocumento.idCatalogoDetalle}" />
+		<p:outputText value="#{ personaController.persona.tipoDocumento.valor}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_dirCiudad}" />
 		<h:panelGroup>	
-		<p:outputText value="#{ personaController.persona.dirCiudad.idCiudad}" />
+		<p:outputText value="#{ personaController.persona.dirCiudad.nombre}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_nacCiudad}" />
 		<h:panelGroup>	
-		<p:outputText value="#{ personaController.persona.nacCiudad.idCiudad}" />
+		<p:outputText value="#{ personaController.persona.nacCiudad.nombre}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_expedCiudad}" />
 		<h:panelGroup>	
-		<p:outputText value="#{ personaController.persona.expedCiudad.idCiudad}" />
+		<p:outputText value="#{ personaController.persona.expedCiudad.nombre}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_profesion}" />
 		<h:panelGroup>	
-		<p:outputText value="#{ personaController.persona.profesion.idCatalogoDetalle}" />
+		<p:outputText value="#{ personaController.persona.profesion.valor}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_usuario}" />
 		<h:panelGroup>	
-		<p:outputText value="#{ personaController.persona.usuario.idUsuario}" />
+		<p:outputText value="#{ personaController.persona.usuario.usuario}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_fecRegistro}" />

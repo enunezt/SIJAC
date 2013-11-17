@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+      	<h:panelGrid id="idPnlActasJunta" columns="2" styleClass="center">
+		 			
+		 			
+		<h:outputLabel value="${msgs.lbl_fecCargue}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ actasJuntaController.actasJunta.id.fecCargue}" converter="javax.faces.DateTime" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_archivo}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ actasJuntaController.actasJunta.archivo}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_nombreArchivo}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ actasJuntaController.actasJunta.nombreArchivo}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ actasJuntaController.actasJunta.estado}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_tipoActa}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ actasJuntaController.actasJunta.tipoActa.valor}" />
+		</h:panelGroup>					
+		 			
+		<h:outputLabel value="${msgs.lbl_junta}" />
+		<h:panelGroup>	
+		<p:outputText value="#{ actasJuntaController.actasJunta.junta.codigo}" />
+		</h:panelGroup>					
+		
+		</h:panelGrid>
+				
+</ui:composition>
+	

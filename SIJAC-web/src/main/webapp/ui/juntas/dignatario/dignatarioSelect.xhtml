@@ -51,7 +51,15 @@
 		 			
 		<h:outputLabel value="${msgs.lbl_tipoDignatario}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ dignatarioController.dignatario.tipoDignatario.idCatalogoDetalle}" />
+		<p:selectOneMenu converter="catalogoConverter"
+					value="#{dignatarioController.dignatario.tipoDignatario}"
+					effect="fade">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{dignatarioController.tipoDignatarioItems}"
+						var="tipoDignatario"
+						itemLabel="#{tipoDignatario.codigo - tipoDignatario.valor}"
+						itemValue="#{tipoDignatario}" />
+				</p:selectOneMenu>
 		</h:panelGroup>					
 		
 		</h:panelGrid>

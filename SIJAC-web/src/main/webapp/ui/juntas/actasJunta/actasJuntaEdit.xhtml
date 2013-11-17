@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"               
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+        <h:form id="formActasJunta"  prependId="false">
+		<h:panelGrid id="idPnlActasJunta" columns="2" styleClass="center">
+			<h:outputLabel value="${msgs.lbl_junta}" />
+			<h:panelGroup>
+				<p:inputText value="#{ actasJuntaController.actasJunta.id.idJunta}" />
+				<p:commandButton title="${msgs.btn_select} ${msgs.lbl_junta}"
+					process="idPnlActasJunta" oncomplete="dlgJunta.show()"
+					icon="ui-icon-search"></p:commandButton>
+			</h:panelGroup>
+			<h:outputLabel value="${msgs.lbl_tipoActa}" />
+			<h:panelGroup>
+				<p:selectOneMenu value="#{actasJuntaController.actasJunta.tipoActa}"
+					effect="fade" converter="catalogoConverter">
+					<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
+					<f:selectItems value="#{actasJuntaController.tipoActaItems}"
+						var="tipoActa" itemLabel="#{tipoActa.codigo - tipoActa.valor}"
+						itemValue="#{tipoActa}" />
+				</p:selectOneMenu>
+			</h:panelGroup>
+
+
+			<h:outputLabel value="${msgs.lbl_fecCargue}" />
+			<h:panelGroup>
+				<p:inputText
+					value="#{ actasJuntaController.actasJunta.id.fecCargue}"
+					converter="javax.faces.DateTime" />
+			</h:panelGroup>
+			<h:outputLabel value="${msgs.lbl_archivo}" />
+			<h:panelGroup>
+				<p:inputText value="#{ actasJuntaController.actasJunta.archivo}" />
+			</h:panelGroup>
+			<h:outputLabel value="${msgs.lbl_nombreArchivo}" />
+			<h:panelGroup>
+				<p:inputText
+					value="#{ actasJuntaController.actasJunta.nombreArchivo}" />
+			</h:panelGroup>
+			<h:outputLabel value="${msgs.lbl_estado}" />
+			<h:panelGroup>
+
+				<p:selectOneMenu value="#{actasJuntaController.actasJunta.estado}"
+					effect="fade">
+					<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
+					<f:selectItem itemLabel="A" itemValue="A" />
+					<f:selectItem itemLabel="I" itemValue="I" />
+					<f:selectItem itemLabel="C" itemValue="C" />
+				</p:selectOneMenu>
+			</h:panelGroup>
+		</h:panelGrid>
+				
+		<h:panelGrid columns="4">
+		<p:commandButton action="#{actasJuntaController.doCrear}" value="${msgs.btn_crear}" update="idTblActasJunta" style="margin-top: 10px;" icon="ui-icon-plusthick" ></p:commandButton>
+		<p:commandButton action="#{actasJuntaController.doActualizar}" value="${msgs.btn_modificar}" update="idTblActasJunta" style="margin-top: 10px;" icon="ui-icon-disk" ></p:commandButton>
+		<p:commandButton action="#{actasJuntaController.doBorrar}" value="${msgs.btn_eliminar}" update="idTblActasJunta" style="margin-top: 10px;" icon="ui-icon-minusthick" ></p:commandButton>
+		<p:commandButton action="#{actasJuntaController.doConsultar}" value="${msgs.btn_consultar}" update="idTblActasJunta" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
+	                
+		</h:panelGrid>
+	<div  style="width:100%; overflow: auto;">
+		<p:dataTable id="idTblActasJunta" value="#{actasJuntaController.entidadLst}" binding="#{actasJuntaController.tabla}" var="actasJuntaTO" rows="10" border="1" >
+		 
+		
+		  			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_fecCargue}" />
+		</f:facet>		
+		<h:outputText value="#{actasJuntaTO.id.fecCargue}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_archivo}" />
+		</f:facet>		
+		<h:outputText value="#{actasJuntaTO.archivo}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_nombreArchivo}" />
+		</f:facet>		
+		<h:outputText value="#{actasJuntaTO.nombreArchivo}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_estado}" />
+		</f:facet>		
+		<h:outputText value="#{actasJuntaTO.estado}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_tipoActa}" />
+		</f:facet>		
+		<h:outputText value="#{actasJuntaTO.tipoActa.idCatalogoDetalle}"  />
+		</p:column>		
+		 			
+		<p:column >
+		<f:facet name="header">
+		<h:outputLabel value="${msgs.lbl_junta}" />
+		</f:facet>		
+		<h:outputText value="#{actasJuntaTO.junta.idJunta}"  />
+		</p:column>		
+			
+		<p:column   exportable="false">	
+		<f:facet name="header">
+		<h:panelGrid columns="2" styleClass="panelsinbore">
+	   <p:commandLink id="btnActasJuntaPrintPDF2"  title="${msgs.lbl_exportaPDF}"  ajax="false" rendered="#{!empty actasJuntaController.entidadLst}">
+	           <p:graphicImage value="/resources/images/pdf.png" alt="PDF" height="20" width="17" title="${msgs.lbl_exportaPDF}" /> 
+	   <p:dataExporter target="idTblActasJunta" type="pdf" fileName="reporteActasJunta" 
+	   preProcessor="#{actasJuntaController.doPreProcessPDF}" />
+	   </p:commandLink>
+	          <p:commandLink id="btnActasJuntaPrintXLS2"  title="${msgs.lbl_exportaXLS}"  ajax="false" rendered="#{!empty actasJuntaController.entidadLst}">
+	           <p:graphicImage value="/resources/images/excel.png" alt="XLS" height="20" width="17" title="${msgs.lbl_exportaXLS}"/> 
+	   <p:dataExporter target="idTblActasJunta" type="xls" fileName="reporteActasJunta" 
+	   postProcessor="#{actasJuntaController.doPostProcessXLS}"/>
+	   </p:commandLink> 
+	   	</h:panelGrid>
+		
+		</f:facet>	
+		<p:commandButton id="btnEditTblActasJunta" action="#{actasJuntaController.doEditar}" style="margin-top: 10px;" icon="ui-icon-pencil" process="@all,:formActasJunta" update="@all,:formActasJunta:idPnlActasJunta" ></p:commandButton>
+		
+	    </p:column>		
+		</p:dataTable>
+		</div>	
+	</h:form>
+	
+		
+		 
+	
+	 			
+	 			
+	 			
+	 			
+	 			
+	 			
+	<p:dialog header="${msgs.lbl_junta}" showEffect="fade" hideEffect="fade" widgetVar="dlgJunta" modal="false">
+    <h:panelGrid id="dplyActasJuntaJunta" columns="1" style="margin: 10px;"> 
+    <ui:include  src="../junta/juntaSelect.xhtml"  >
+    <ui:param name="uiParamBckBeanOrigen" value="actasJuntaController.actasJunta.junta" />
+    <ui:param name="uiParamEntAtt" value="Junta" />
+    <ui:param name="uiParamEntOrig" value="ActasJunta" />
+    </ui:include>       
+    </h:panelGrid>
+     <f:facet name="footer">
+                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
+                   
+                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgJunta.hide()" icon="ui-icon-closethick"/>
+                </h:panelGroup>
+            </f:facet>
+    </p:dialog>
+	
+
+</ui:composition>
+	

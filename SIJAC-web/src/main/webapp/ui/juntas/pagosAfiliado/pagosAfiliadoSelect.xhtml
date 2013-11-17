@@ -7,72 +7,7 @@
                 xmlns:my="http://java.sun.com/jsf/composite/components">
         <h:form id="formPagosAfiliado"  prependId="false">
 			<h:panelGrid id="idPnlPagosAfiliado" columns="2" styleClass="center">
-		 			
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes1}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes1}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes2}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes2}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes3}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes3}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes4}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes4}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes5}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes5}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes6}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes6}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes7}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes7}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes8}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes8}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes9}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes9}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes10}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes10}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes11}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes11}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_pagMes12}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.pagMes12}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.fecCambio}" converter="javax.faces.DateTime" />
-		</h:panelGroup>					
+				
 		 			
 		<h:outputLabel value="${msgs.lbl_anio}" />
 		<h:panelGroup>	
@@ -88,11 +23,7 @@
 		<h:panelGroup>	
 		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.junta.idJunta}" />
 		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ pagosAfiliadoController.pagosAfiliado.usuario.idUsuario}" />
-		</h:panelGroup>					
+					
 		
 		</h:panelGrid>
 				
@@ -102,99 +33,90 @@
 		</h:panelGrid>
 	<div  style="width:100%; overflow: auto;">
 		<p:dataTable id="idTblPagosAfiliado" value="#{pagosAfiliadoController.entidadLst}" binding="#{pagosAfiliadoController.tabla}" var="pagosAfiliadoTO" rows="10" border="1" >
-		 
-		
-		  			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes1}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes1}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes1}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes2}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes2}"  />
+		<p:selectBooleanCheckbox disabled="true"  value="#{pagosAfiliadoTO.pagMes2}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes3}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes3}"  />
+		<p:selectBooleanCheckbox disabled="true"  value="#{pagosAfiliadoTO.pagMes3}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes4}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes4}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes4}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes5}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes5}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes5}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes6}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes6}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes6}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes7}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes7}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes7}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes8}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes8}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes8}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes9}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes9}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes9}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes10}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes10}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes10}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes11}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes11}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes11}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_pagMes12}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.pagMes12}"  />
+		<p:selectBooleanCheckbox disabled="true" value="#{pagosAfiliadoTO.pagMes12}"  />
 		</p:column>		
-		 			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.fecCambio}"  />
-		</p:column>		
+		
 		 			
 		<p:column >
 		<f:facet name="header">
@@ -207,23 +129,16 @@
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_persona}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.persona.idPersona}"  />
+		<h:outputText value="#{pagosAfiliadoTO.persona.numDocumento}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_junta}" />
 		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.junta.idJunta}"  />
+		<h:outputText value="#{pagosAfiliadoTO.junta.codigo}"  />
 		</p:column>		
 		 			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		</f:facet>		
-		<h:outputText value="#{pagosAfiliadoTO.usuario.idUsuario}"  />
-		</p:column>		
-			
 		<p:column  exportable="false">	
 		<f:facet name="header">
 		<h:panelGrid columns="2" styleClass="panelsinbore">

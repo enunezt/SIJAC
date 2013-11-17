@@ -15,9 +15,9 @@
 	<h:panelGrid columns="2" style="width:90%;">
 	
 	<h:panelGrid columns="2">
-	<h:outputLabel value="${msgs.lbl_Usuario}" />
+	<h:outputLabel value="${msgs.lbl_usuario}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ usuarioController.usuario.usuario}" label="${msgs.lbl_Usuario}" required="#{param['validarForm']=='true'}" />
+		<p:inputText value="#{ usuarioController.usuario.usuario}" label="${msgs.lbl_usuario}" required="#{param['validarForm']=='true'}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_Clave}" />
@@ -77,13 +77,13 @@
 		 			
 		<p:column >
 		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_Usuario}" />
+		<h:outputLabel value="${msgs.lbl_usuario}" />
 		</f:facet>		
 		<h:outputText value="#{usuarioTO.usuario}"  />
 		</p:column>	
 		<p:column >
 		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_FecRegistro}" />
+		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
 		</f:facet>		
 		<h:outputText value="#{usuarioTO.fecRegistro}">
 		<f:convertDateTime dateStyle="short"  type="date" />

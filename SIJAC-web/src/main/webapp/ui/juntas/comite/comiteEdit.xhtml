@@ -7,46 +7,56 @@
                 xmlns:my="http://java.sun.com/jsf/composite/components">
         <h:form id="formComite"  prependId="false">
 			<h:panelGrid id="idPnlComite" columns="2" styleClass="center">
-		 			
-		<h:outputLabel value="${msgs.lbl_fecInicio}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.id.fecInicio}" converter="javax.faces.DateTime" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_fecFin}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.id.fecFin}" converter="javax.faces.DateTime" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.fecRegistro}" converter="javax.faces.DateTime" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.fecCambio}" converter="javax.faces.DateTime" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_estado}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.estado}" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_junta}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.junta.idJunta}" />
-<p:commandButton title="${msgs.btn_select} ${msgs.lbl_junta}" process="idPnlComite" oncomplete="dlgJunta.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_persona}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.persona.idPersona}" />
-<p:commandButton title="${msgs.btn_select} ${msgs.lbl_persona}" process="idPnlComite" oncomplete="dlgPersona.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.usuario.idUsuario}" />
-<p:commandButton title="${msgs.btn_select} ${msgs.lbl_usuario}" process="idPnlComite" oncomplete="dlgUsuario.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_tipoComite}" />
-		<h:panelGroup>	
-<p:selectOneMenu value="#{comiteController.comite.tipoComite}" effect="fade" > 
-<f:selectItem itemLabel="Select One" itemValue="" /> 
-<f:selectItems value="#{comiteController.tipoComiteItems}" var="tipoComite" itemLabel="#{tipoComite.codigo - tipoComite.valor}" itemValue="#{tipoComite}" />
-</p:selectOneMenu> 	</h:panelGroup>					
+				<h:outputLabel value="${msgs.lbl_junta}" />
+			<h:panelGroup>
+				<p:inputText value="#{ comiteController.comite.junta.idJunta}" />
+				<p:commandButton title="${msgs.btn_select} ${msgs.lbl_junta}"
+					process="idPnlComite" oncomplete="dlgJunta.show()"
+					icon="ui-icon-search"></p:commandButton>
+			</h:panelGroup>
+			<h:outputLabel value="${msgs.lbl_afiliado}" />
+			<h:panelGroup>
+				<p:inputText value="#{ comiteController.comite.persona.idPersona}" />
+				<p:commandButton title="${msgs.btn_select} ${msgs.lbl_persona}"
+					process="idPnlComite" oncomplete="dlgPersona.show()"
+					icon="ui-icon-search"></p:commandButton>
+			</h:panelGroup>
 
+			<h:outputLabel value="${msgs.lbl_fecInicio}" />
+			<h:panelGroup>
+				<p:calendar id="calFecInicio"
+					value="#{comiteController.comite.id.fecInicio}" navigator="true"
+					display="inline" />
+			</h:panelGroup>
+			<h:outputLabel value="${msgs.lbl_fecFin}" />
+			<h:panelGroup>
+				<p:calendar id="calFecfin"
+					value="#{comiteController.comite.id.fecFin}" navigator="true"
+					display="inline" />
+			</h:panelGroup>
+
+			<h:outputLabel value="${msgs.lbl_estado}" />
+			<h:panelGroup>
+				<p:selectOneMenu value="#{comiteController.comite.estado}"
+					effect="fade">
+					<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
+					<f:selectItem itemLabel="A" itemValue="A" />
+					<f:selectItem itemLabel="I" itemValue="I" />
+					<f:selectItem itemLabel="C" itemValue="C" />
+				</p:selectOneMenu>
+			</h:panelGroup>
+		
+			<h:outputLabel value="${msgs.lbl_tipoComite}" />
+			<h:panelGroup>
+				<p:selectOneMenu value="#{comiteController.comite.tipoComite}"
+					effect="fade" converter="catalogoConverter">
+					<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
+					<f:selectItems value="#{comiteController.tipoComiteItems}"
+						var="tipoComite"
+						itemLabel="#{tipoComite.codigo - tipoComite.valor}"
+						itemValue="#{tipoComite}" />
+				</p:selectOneMenu>
+			</h:panelGroup>
 		</h:panelGrid>
 				
 		<h:panelGrid columns="4">
@@ -58,9 +68,7 @@
 		</h:panelGrid>
 	<div  style="width:100%; overflow: auto;">
 		<p:dataTable id="idTblComite" value="#{comiteController.entidadLst}" binding="#{comiteController.tabla}" var="comiteTO" rows="10" border="1" >
-		 
-		
-		  			
+			  			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_fecInicio}" />
@@ -81,13 +89,7 @@
 		</f:facet>		
 		<h:outputText value="#{comiteTO.fecRegistro}"  />
 		</p:column>		
-		 			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		</f:facet>		
-		<h:outputText value="#{comiteTO.fecCambio}"  />
-		</p:column>		
+		
 		 			
 		<p:column >
 		<f:facet name="header">
@@ -100,28 +102,22 @@
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_junta}" />
 		</f:facet>		
-		<h:outputText value="#{comiteTO.junta.idJunta}"  />
+		<h:outputText value="#{comiteTO.junta.codigo}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_persona}" />
 		</f:facet>		
-		<h:outputText value="#{comiteTO.persona.idPersona}"  />
+		<h:outputText value="#{comiteTO.persona.nombres} #{comiteTO.persona.apellido1} #{comiteTO.persona.apellido2}"  />
 		</p:column>		
 		 			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		</f:facet>		
-		<h:outputText value="#{comiteTO.usuario.idUsuario}"  />
-		</p:column>		
-		 			
+			 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_tipoComite}" />
 		</f:facet>		
-		<h:outputText value="#{comiteTO.tipoComite.idCatalogoDetalle}"  />
+		<h:outputText value="#{comiteTO.tipoComite.valor}"  />
 		</p:column>		
 			
 		<p:column   exportable="false">	
@@ -147,15 +143,6 @@
 		</div>	
 	</h:form>
 	
-		
-		 
-	
-	 			
-	 			
-	 			
-	 			
-	 			
-	 			
 	<p:dialog header="${msgs.lbl_junta}" showEffect="fade" hideEffect="fade" widgetVar="dlgJunta" modal="false">
     <h:panelGrid id="dplyComiteJunta" columns="1" style="margin: 10px;"> 
     <ui:include  src="../junta/juntaSelect.xhtml"  >
@@ -187,24 +174,6 @@
                 </h:panelGroup>
             </f:facet>
     </p:dialog>
-	 			
-	<p:dialog header="${msgs.lbl_usuario}" showEffect="fade" hideEffect="fade" widgetVar="dlgUsuario" modal="false">
-    <h:panelGrid id="dplyComiteUsuario" columns="1" style="margin: 10px;"> 
-    <ui:include  src="../usuario/usuarioSelect.xhtml"  >
-    <ui:param name="uiParamBckBeanOrigen" value="comiteController.comite.usuario" />
-    <ui:param name="uiParamEntAtt" value="Usuario" />
-    <ui:param name="uiParamEntOrig" value="Comite" />
-    </ui:include>       
-    </h:panelGrid>
-     <f:facet name="footer">
-                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
-                   
-                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgUsuario.hide()" icon="ui-icon-closethick"/>
-                </h:panelGroup>
-            </f:facet>
-    </p:dialog>
-	 			
-	
 
 </ui:composition>
 	

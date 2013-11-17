@@ -6,44 +6,59 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:my="http://java.sun.com/jsf/composite/components">
         <h:form id="formLibro"  prependId="false">
-			<h:panelGrid id="idPnlLibro" columns="2" styleClass="center">
-		 			
-		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ libroController.libro.fecRegistro}" converter="javax.faces.DateTime" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ libroController.libro.fecCambio}" converter="javax.faces.DateTime" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_estado}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ libroController.libro.estado}" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_observaciones}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ libroController.libro.observaciones}" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_persona}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ libroController.libro.persona.idPersona}" />
-<p:commandButton title="${msgs.btn_select} ${msgs.lbl_persona}" process="idPnlLibro" oncomplete="dlgPersona.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_junta}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ libroController.libro.junta.idJunta}" />
-<p:commandButton title="${msgs.btn_select} ${msgs.lbl_junta}" process="idPnlLibro" oncomplete="dlgJunta.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ libroController.libro.usuario.idUsuario}" />
-<p:commandButton title="${msgs.btn_select} ${msgs.lbl_usuario}" process="idPnlLibro" oncomplete="dlgUsuario.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_comisionTrabajo}" />
-		<h:panelGroup>	
-<p:selectOneMenu value="#{libroController.libro.comisionTrabajo}" effect="fade" > 
-<f:selectItem itemLabel="Select One" itemValue="" /> 
-<f:selectItems value="#{libroController.comisionTrabajoItems}" var="comisionTrabajo" itemLabel="#{comisionTrabajo.codigo - comisionTrabajo.valor}" itemValue="#{comisionTrabajo}" />
-</p:selectOneMenu> 	</h:panelGroup>					
+		<h:panelGrid id="idPnlLibro" columns="4" styleClass="center">
+
+			<h:outputLabel value="${msgs.lbl_junta}" />
+			<h:panelGroup>
+				<p:inputText value="#{ libroController.libro.junta.idJunta}" />
+				<p:commandButton title="${msgs.btn_select} ${msgs.lbl_junta}"
+					process="idPnlLibro" oncomplete="dlgJunta.show()"
+					icon="ui-icon-search"></p:commandButton>
+			</h:panelGroup>
+
+			<h:outputLabel value="${msgs.lbl_fecha_afiliacion}" />
+			<h:panelGroup>
+				<p:calendar id="calFecRegistro"
+					value="#{libroController.libro.fecRegistro}" navigator="true"
+					display="inline" />
+			</h:panelGroup>
+
+			<h:outputLabel value="${msgs.lbl_estado}" />
+			<h:panelGroup>
+				<p:selectOneMenu value="#{libroController.libro.estado}"
+					effect="fade">
+					<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
+					<f:selectItem itemLabel="A" itemValue="ACTIVO" />
+					<f:selectItem itemLabel="I" itemValue="INACTIVO" />
+					<f:selectItem itemLabel="C" itemValue="CANCELADO" />
+				</p:selectOneMenu>
+			</h:panelGroup>
+			
+			<h:outputLabel value="${msgs.lbl_comisionTrabajo}" />
+			<h:panelGroup>
+				<p:selectOneMenu value="#{libroController.libro.comisionTrabajo}"
+					effect="fade" converter="catalogoConverter">
+					<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
+					<f:selectItems value="#{libroController.comisionTrabajoItems}"
+						var="comisionTrabajo"
+						itemLabel="#{comisionTrabajo.codigo - comisionTrabajo.valor}"
+						itemValue="#{comisionTrabajo}" />
+				</p:selectOneMenu>
+			</h:panelGroup>
+			
+			<h:outputLabel value="${msgs.lbl_observaciones}" />
+			<h:panelGroup>
+				<p:inputTextarea value="#{ libroController.libro.observaciones}" />
+			</h:panelGroup>
+			
 
 		</h:panelGrid>
+
+		<p:panel header="${msgs.lbl_datos_personales}" collapsed="true"  toggleable="true"  menuTitle="${msgs.lbl_datos_personales}" toggleSpeed="10" id="pnlDatosPersonales"  widgetVar="panelDatosPersonales">
+ 		
+    <ui:include  src="../persona/personaInclude.xhtml"  >
+    </ui:include> 
+       </p:panel>
 				
 		<h:panelGrid columns="4">
 		<p:commandButton action="#{libroController.doCrear}" value="${msgs.btn_crear}" update="idTblLibro" style="margin-top: 10px;" icon="ui-icon-plusthick" ></p:commandButton>
@@ -54,9 +69,6 @@
 		</h:panelGrid>
 	<div  style="width:100%; overflow: auto;">
 		<p:dataTable id="idTblLibro" value="#{libroController.entidadLst}" binding="#{libroController.tabla}" var="libroTO" rows="10" border="1" >
-		 
-		
-		  			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
@@ -110,7 +122,7 @@
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_comisionTrabajo}" />
 		</f:facet>		
-		<h:outputText value="#{libroTO.comisionTrabajo.idCatalogoDetalle}"  />
+		<h:outputText value="#{libroTO.comisionTrabajo.valor}"  />
 		</p:column>		
 			
 		<p:column   exportable="false">	
@@ -135,30 +147,7 @@
 		</p:dataTable>
 		</div>	
 	</h:form>
-	
-		
-		 
-	
-	 			
-	 			
-	 			
-	 			
-	 			
-	<p:dialog header="${msgs.lbl_persona}" showEffect="fade" hideEffect="fade" widgetVar="dlgPersona" modal="false">
-    <h:panelGrid id="dplyLibroPersona" columns="1" style="margin: 10px;"> 
-    <ui:include  src="../persona/personaSelect.xhtml"  >
-    <ui:param name="uiParamBckBeanOrigen" value="libroController.libro.persona" />
-    <ui:param name="uiParamEntAtt" value="Persona" />
-    <ui:param name="uiParamEntOrig" value="Libro" />
-    </ui:include>       
-    </h:panelGrid>
-     <f:facet name="footer">
-                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
-                   
-                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgPersona.hide()" icon="ui-icon-closethick"/>
-                </h:panelGroup>
-            </f:facet>
-    </p:dialog>
+
 	 			
 	<p:dialog header="${msgs.lbl_junta}" showEffect="fade" hideEffect="fade" widgetVar="dlgJunta" modal="false">
     <h:panelGrid id="dplyLibroJunta" columns="1" style="margin: 10px;"> 
@@ -175,24 +164,6 @@
                 </h:panelGroup>
             </f:facet>
     </p:dialog>
-	 			
-	<p:dialog header="${msgs.lbl_usuario}" showEffect="fade" hideEffect="fade" widgetVar="dlgUsuario" modal="false">
-    <h:panelGrid id="dplyLibroUsuario" columns="1" style="margin: 10px;"> 
-    <ui:include  src="../usuario/usuarioSelect.xhtml"  >
-    <ui:param name="uiParamBckBeanOrigen" value="libroController.libro.usuario" />
-    <ui:param name="uiParamEntAtt" value="Usuario" />
-    <ui:param name="uiParamEntOrig" value="Libro" />
-    </ui:include>       
-    </h:panelGrid>
-     <f:facet name="footer">
-                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
-                   
-                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgUsuario.hide()" icon="ui-icon-closethick"/>
-                </h:panelGroup>
-            </f:facet>
-    </p:dialog>
-	 			
-	
 
 </ui:composition>
 	

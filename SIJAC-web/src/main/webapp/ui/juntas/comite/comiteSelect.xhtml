@@ -7,47 +7,48 @@
                 xmlns:my="http://java.sun.com/jsf/composite/components">
         <h:form id="formComite"  prependId="false">
 			<h:panelGrid id="idPnlComite" columns="2" styleClass="center">
-		 			
-		 			
-		<h:outputLabel value="${msgs.lbl_fecInicio}" />
+			<h:outputLabel value="${msgs.lbl_fecInicio}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.id.fecInicio}" converter="javax.faces.DateTime" />
-		</h:panelGroup>					
-		 			
+	<p:calendar id="calFecInicio"
+					value="#{comiteController.comite.id.fecInicio}" navigator="true"
+					display="inline" />
+ 	</h:panelGroup>					
 		<h:outputLabel value="${msgs.lbl_fecFin}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.id.fecFin}" converter="javax.faces.DateTime" />
-		</h:panelGroup>					
+	<p:calendar id="calFecfin"
+					value="#{comiteController.comite.id.fecFin}" navigator="true"
+					display="inline" />
+ 	</h:panelGroup>								
 		 			
 		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.fecRegistro}" converter="javax.faces.DateTime" />
+	<p:calendar id="calFecfin"
+					value="#{comiteController.comite.fecRegistro}" navigator="true"
+					display="inline" />
 		</h:panelGroup>					
 		 			
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.fecCambio}" converter="javax.faces.DateTime" />
-		</h:panelGroup>					
+						
 		 			
 		<h:outputLabel value="${msgs.lbl_estado}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.estado}" />
+		<p:selectOneMenu value="#{comiteController.comite.estado}" effect="fade" > 
+<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" /> 
+<f:selectItem itemLabel="A" itemValue="A" /> 
+<f:selectItem itemLabel="I" itemValue="I" /> 
+<f:selectItem itemLabel="C" itemValue="C" /> 
+</p:selectOneMenu> 
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_junta}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.junta.idJunta}" />
+		<p:inputText value="#{ comiteController.comite.junta.codigo}" />
 		</h:panelGroup>					
 		 			
 		<h:outputLabel value="${msgs.lbl_persona}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.persona.idPersona}" />
+		<p:inputText value="#{ comiteController.comite.persona.numDocumento}" />
 		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ comiteController.comite.usuario.idUsuario}" />
-		</h:panelGroup>					
+					
 		 			
 		<h:outputLabel value="${msgs.lbl_tipoComite}" />
 		<h:panelGroup>	
@@ -62,9 +63,6 @@
 		</h:panelGrid>
 	<div  style="width:100%; overflow: auto;">
 		<p:dataTable id="idTblComite" value="#{comiteController.entidadLst}" binding="#{comiteController.tabla}" var="comiteTO" rows="10" border="1" >
-		 
-		
-		  			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_fecInicio}" />
@@ -85,13 +83,7 @@
 		</f:facet>		
 		<h:outputText value="#{comiteTO.fecRegistro}"  />
 		</p:column>		
-		 			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		</f:facet>		
-		<h:outputText value="#{comiteTO.fecCambio}"  />
-		</p:column>		
+		
 		 			
 		<p:column >
 		<f:facet name="header">
@@ -104,29 +96,23 @@
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_junta}" />
 		</f:facet>		
-		<h:outputText value="#{comiteTO.junta.idJunta}"  />
+		<h:outputText value="#{comiteTO.junta.codigo}"  />
 		</p:column>		
 		 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_persona}" />
 		</f:facet>		
-		<h:outputText value="#{comiteTO.persona.idPersona}"  />
+		<h:outputText value="#{comiteTO.persona.nombres} #{comiteTO.persona.apellido1} #{comiteTO.persona.apellido2}"  />
 		</p:column>		
 		 			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		</f:facet>		
-		<h:outputText value="#{comiteTO.usuario.idUsuario}"  />
-		</p:column>		
-		 			
+			 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_tipoComite}" />
 		</f:facet>		
-		<h:outputText value="#{comiteTO.tipoComite.idCatalogoDetalle}"  />
-		</p:column>		
+		<h:outputText value="#{comiteTO.tipoComite.valor}"  />
+		</p:column>	
 			
 		<p:column  exportable="false">	
 		<f:facet name="header">

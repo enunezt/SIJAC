@@ -8,12 +8,7 @@
         <h:form id="formPersona"  prependId="false">
 			<h:panelGrid id="idPnlPersona" columns="2" styleClass="center">
 		 			
-		 			
-		<h:outputLabel value="${msgs.lbl_idPersona}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.idPersona}" />
-		</h:panelGroup>					
-		 			
+	 			
 		<h:outputLabel value="${msgs.lbl_nombres}" />
 		<h:panelGroup>	
 		<p:inputText value="#{ personaController.persona.nombres}" />
@@ -54,50 +49,27 @@
 		<p:inputText value="#{ personaController.persona.fecCambio}" converter="javax.faces.DateTime" />
 		</h:panelGroup>					
 		 			
-		<h:outputLabel value="${msgs.lbl_email}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.email}" />
-		</h:panelGroup>					
+						
 		 			
-		<h:outputLabel value="${msgs.lbl_codigo}" />
+		<h:outputLabel value="${msgs.lbl_estado}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.codigo}" />
+		<p:inputText value="#{ personaController.persona.estado}" />
 		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_telefonos}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.telefonos}" />
-		</h:panelGroup>					
-		 			
+		
 		<h:outputLabel value="${msgs.lbl_tipoDocumento}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.tipoDocumento.idCatalogoDetalle}" />
+		<p:inputText value="#{ personaController.persona.tipoDocumento}" />
 		</h:panelGroup>					
 		 			
-		<h:outputLabel value="${msgs.lbl_dirCiudad}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.dirCiudad.idCiudad}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_nacCiudad}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.nacCiudad.idCiudad}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_expedCiudad}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.expedCiudad.idCiudad}" />
-		</h:panelGroup>					
+					
 		 			
 		<h:outputLabel value="${msgs.lbl_profesion}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.profesion.idCatalogoDetalle}" />
-		</h:panelGroup>					
-		 			
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ personaController.persona.usuario.idUsuario}" />
-		</h:panelGroup>					
+<p:selectOneMenu value="#{personaController.persona.profesion}" effect="fade" converter="catalogoConverter"> 
+<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" /> 
+<f:selectItems value="#{personaController.profesionItems}" var="profesion" itemLabel="#{profesion.codigo - profesion.valor}" itemValue="#{profesion}" />
+</p:selectOneMenu> 	</h:panelGroup>	
+				
 		 			
 		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
 		<h:panelGroup>	
@@ -112,16 +84,7 @@
 		</h:panelGrid>
 	<div  style="width:100%; overflow: auto;">
 		<p:dataTable id="idTblPersona" value="#{personaController.entidadLst}" binding="#{personaController.tabla}" var="personaTO" rows="10" border="1" >
-		 
-		
-		  			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_idPersona}" />
-		</f:facet>		
-		<h:outputText value="#{personaTO.idPersona}"  />
-		</p:column>		
-		 			
+
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_nombres}" />
@@ -171,12 +134,7 @@
 		<h:outputText value="#{personaTO.fecNacimiento}"  />
 		</p:column>		
 		 			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		</f:facet>		
-		<h:outputText value="#{personaTO.fecCambio}"  />
-		</p:column>		
+		
 		 			
 		<p:column >
 		<f:facet name="header">
@@ -203,7 +161,7 @@
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_tipoDocumento}" />
 		</f:facet>		
-		<h:outputText value="#{personaTO.tipoDocumento.idCatalogoDetalle}"  />
+		<h:outputText value="#{personaTO.tipoDocumento.codigo}"  />
 		</p:column>		
 		 			
 		<p:column >
@@ -231,7 +189,7 @@
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_profesion}" />
 		</f:facet>		
-		<h:outputText value="#{personaTO.profesion.idCatalogoDetalle}"  />
+		<h:outputText value="#{personaTO.profesion.valor}"  />
 		</p:column>		
 		 			
 		<p:column >

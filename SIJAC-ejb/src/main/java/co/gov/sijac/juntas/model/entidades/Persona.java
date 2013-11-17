@@ -28,7 +28,7 @@ public class Persona implements Serializable {
 	private String apellido1;
 	private String apellido2;
 	private String barrio;
-	private String codigo;
+	private String estado;
 	private String direccion;
 	private String email;
 	private Date fecCambio;
@@ -66,6 +66,8 @@ public class Persona implements Serializable {
 	    Pais pais2=new Pais(52, 170, "CO", "COL", "COLOMBIA");	    
 	    dpto2.setPais(pais2);
 	    expedCiudad.setDepartamento(dpto2); 
+	    
+	    setEstado("A");
 	    
 	    usuario=new Usuario();
 	}
@@ -114,12 +116,12 @@ public class Persona implements Serializable {
 
 
 	@Column(nullable=false, length=1)
-	public String getCodigo() {
-		return this.codigo;
+	public String getEstado() {
+		return this.estado;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 

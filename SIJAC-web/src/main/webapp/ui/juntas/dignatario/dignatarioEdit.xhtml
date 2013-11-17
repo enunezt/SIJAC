@@ -6,7 +6,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:my="http://java.sun.com/jsf/composite/components">
         <h:form id="formDignatario"  prependId="false">
-			<h:panelGrid id="idPnlDignatario" columns="2" styleClass="center">
+			<h:panelGrid id="idPnlDignatario" columns="4" styleClass="center">
 		 			
 		<h:outputLabel value="${msgs.lbl_fecInicio}" />
 		<h:panelGroup>	
@@ -16,38 +16,42 @@
 		<h:panelGroup>	
 		<p:inputText value="#{ dignatarioController.dignatario.id.fecFin}" converter="javax.faces.DateTime" />
  	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_fecRegistro}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ dignatarioController.dignatario.fecRegistro}" converter="javax.faces.DateTime" />
- 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_fecCambio}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ dignatarioController.dignatario.fecCambio}" converter="javax.faces.DateTime" />
- 	</h:panelGroup>					
+					
 		<h:outputLabel value="${msgs.lbl_estado}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ dignatarioController.dignatario.estado}" />
+		<p:selectOneMenu value="#{dignatarioController.dignatario.estado}"
+					effect="fade" >
+					<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
+					<f:selectItem itemLabel="A" itemValue="ACTIVO" />
+					<f:selectItem itemLabel="I" itemValue="INACTIVO" />
+					<f:selectItem itemLabel="C" itemValue="CANCELADO" />
+				</p:selectOneMenu>
  	</h:panelGroup>					
 		<h:outputLabel value="${msgs.lbl_junta}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ dignatarioController.dignatario.junta.idJunta}" />
+		<p:inputText value="#{ dignatarioController.dignatario.junta}" />
 <p:commandButton title="${msgs.btn_select} ${msgs.lbl_junta}" process="idPnlDignatario" oncomplete="dlgJunta.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_persona}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ dignatarioController.dignatario.persona.idPersona}" />
-<p:commandButton title="${msgs.btn_select} ${msgs.lbl_persona}" process="idPnlDignatario" oncomplete="dlgPersona.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_usuario}" />
-		<h:panelGroup>	
-		<p:inputText value="#{ dignatarioController.dignatario.usuario.idUsuario}" />
-<p:commandButton title="${msgs.btn_select} ${msgs.lbl_usuario}" process="idPnlDignatario" oncomplete="dlgUsuario.show()" icon="ui-icon-search"></p:commandButton>		 	</h:panelGroup>					
-		<h:outputLabel value="${msgs.lbl_tipoDignatario}" />
-		<h:panelGroup>	
-<p:selectOneMenu value="#{dignatarioController.dignatario.tipoDignatario}" effect="fade" > 
-<f:selectItem itemLabel="Select One" itemValue="" /> 
-<f:selectItems value="#{dignatarioController.tipoDignatarioItems}" var="tipoDignatario" itemLabel="#{tipoDignatario.codigo - tipoDignatario.valor}" itemValue="#{tipoDignatario}" />
-</p:selectOneMenu> 	</h:panelGroup>					
+	
+			<h:outputLabel value="${msgs.lbl_tipoDignatario}" />
+			<h:panelGroup>
+				<p:selectOneMenu
+					value="#{dignatarioController.dignatario.tipoDignatario}"
+					effect="fade" converter="catalogoConverter">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{dignatarioController.tipoDignatarioItems}"
+						var="tipoDignatario"
+						itemLabel="#{tipoDignatario.codigo - tipoDignatario.valor}"
+						itemValue="#{tipoDignatario}" />
+				</p:selectOneMenu>
+			</h:panelGroup>
 
 		</h:panelGrid>
+		       
+       <p:panel header="${msgs.lbl_datos_personales}" collapsed="true"  toggleable="true"  menuTitle="${msgs.lbl_datos_personales}" toggleSpeed="10" id="pnlDatosPersonales"  widgetVar="panelDatosPersonales">
+ 		
+    <ui:include  src="../persona/personaInclude.xhtml"  >
+    </ui:include> 
+       </p:panel>
 				
 		<h:panelGrid columns="4">
 		<p:commandButton action="#{dignatarioController.doCrear}" value="${msgs.btn_crear}" update="idTblDignatario" style="margin-top: 10px;" icon="ui-icon-plusthick" ></p:commandButton>
@@ -146,14 +150,6 @@
 		</p:dataTable>
 		</div>	
 	</h:form>
-	
-		
-		 
-	
-	 			
-	 			
-	 			
-	 			
 	 			
 	 			
 	<p:dialog header="${msgs.lbl_junta}" showEffect="fade" hideEffect="fade" widgetVar="dlgJunta" modal="false">
@@ -171,39 +167,6 @@
                 </h:panelGroup>
             </f:facet>
     </p:dialog>
-	 			
-	<p:dialog header="${msgs.lbl_persona}" showEffect="fade" hideEffect="fade" widgetVar="dlgPersona" modal="false">
-    <h:panelGrid id="dplyDignatarioPersona" columns="1" style="margin: 10px;"> 
-    <ui:include  src="../persona/personaSelect.xhtml"  >
-    <ui:param name="uiParamBckBeanOrigen" value="dignatarioController.dignatario.persona" />
-    <ui:param name="uiParamEntAtt" value="Persona" />
-    <ui:param name="uiParamEntOrig" value="Dignatario" />
-    </ui:include>       
-    </h:panelGrid>
-     <f:facet name="footer">
-                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
-                   
-                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgPersona.hide()" icon="ui-icon-closethick"/>
-                </h:panelGroup>
-            </f:facet>
-    </p:dialog>
-	 			
-	<p:dialog header="${msgs.lbl_usuario}" showEffect="fade" hideEffect="fade" widgetVar="dlgUsuario" modal="false">
-    <h:panelGrid id="dplyDignatarioUsuario" columns="1" style="margin: 10px;"> 
-    <ui:include  src="../usuario/usuarioSelect.xhtml"  >
-    <ui:param name="uiParamBckBeanOrigen" value="dignatarioController.dignatario.usuario" />
-    <ui:param name="uiParamEntAtt" value="Usuario" />
-    <ui:param name="uiParamEntOrig" value="Dignatario" />
-    </ui:include>       
-    </h:panelGrid>
-     <f:facet name="footer">
-                <h:panelGroup layout="block" style="text-align: right; padding: 2px;">
-                   
-                    <p:commandButton type="button" value="${msgs.btn_cerrar}" onclick="dlgUsuario.hide()" icon="ui-icon-closethick"/>
-                </h:panelGroup>
-            </f:facet>
-    </p:dialog>
-	 			
 	
 
 </ui:composition>

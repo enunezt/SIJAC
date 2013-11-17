@@ -21,7 +21,7 @@ public class CatalogoConverter implements Converter{
 	public Object getAsObject(FacesContext context, UIComponent component,
 		String value) {
 		
-		if(value==null)
+		if(value==null || "".equals(value))
 			return null;
  
 	String[] strArr=value.split("::");
@@ -48,7 +48,7 @@ public class CatalogoConverter implements Converter{
 	public String getAsString(FacesContext context, UIComponent component,
 			Object value) {
 		
-		if(value==null)
+		if(value==null || "".equals(value))
 			return null;
 		
 	

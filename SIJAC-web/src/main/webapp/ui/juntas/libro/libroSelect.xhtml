@@ -47,6 +47,10 @@
 		<h:outputLabel value="${msgs.lbl_comisionTrabajo}" />
 		<h:panelGroup>	
 		<p:inputText value="#{ libroController.libro.comisionTrabajo.idCatalogoDetalle}" />
+		<p:selectOneMenu value="#{libroController.libro.comisionTrabajo}" effect="fade" converter="catalogoConverter"> 
+<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" /> 
+<f:selectItems value="#{libroController.comisionTrabajoItems}" var="comisionTrabajo" itemLabel="#{comisionTrabajo.codigo - comisionTrabajo.valor}" itemValue="#{comisionTrabajo}" />
+</p:selectOneMenu> 
 		</h:panelGroup>					
 		
 		</h:panelGrid>

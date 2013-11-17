@@ -10,6 +10,7 @@ import co.gov.sijac.admin.lugares.model.entidades.Pais;
 import co.gov.sijac.admin.model.entidades.Usuario;
 
 import java.util.Date;
+import java.util.Set;
 
 
 /**
@@ -33,6 +34,7 @@ public class Junta implements Serializable {
 	private String telefonos;
 	private Ciudad ciudad;
 	private Usuario usuario;
+	private Set<ActasJunta> actasJuntas;
 
 	public Junta() {
 	}
@@ -174,5 +176,29 @@ public class Junta implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	//bi-directional many-to-one association to ActasJunta
+		@OneToMany(mappedBy="junta", fetch=FetchType.LAZY)
+		public Set<ActasJunta> getActasJuntas() {
+			return this.actasJuntas;
+		}
+
+		public void setActasJuntas(Set<ActasJunta> actasJuntas) {
+			this.actasJuntas = actasJuntas;
+		}
+
+		public ActasJunta addActasJunta(ActasJunta actasJunta) {
+			getActasJuntas().add(actasJunta);
+			actasJunta.setJunta(this);
+
+			return actasJunta;
+		}
+
+		public ActasJunta removeActasJunta(ActasJunta actasJunta) {
+			getActasJuntas().remove(actasJunta);
+			actasJunta.setJunta(null);
+
+			return actasJunta;
+		}
 
 }

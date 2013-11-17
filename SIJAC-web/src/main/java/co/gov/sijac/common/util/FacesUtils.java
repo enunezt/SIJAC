@@ -108,7 +108,7 @@ public class FacesUtils {
 		return appFactory.getApplication(); 
 	}
 	
-	private static ValueExpression getValueBinding(String el, Class<?> clazz) {		
+	public static ValueExpression getValueBinding(String el, Class<?> clazz) {		
  Application app = FacesUtils.getApplication();	    	 
      	 ExpressionFactory exprFactory = app.getExpressionFactory();
      	// getting the ELContext from faces context
@@ -119,7 +119,7 @@ public class FacesUtils {
 	}
 	
 	@SuppressWarnings("unused")
-	private static HttpServletRequest getServletRequest() {
+	public static HttpServletRequest getServletRequest() {
 		return (HttpServletRequest)getCurrentInstancia().getExternalContext().getRequest();
 	}
 	
@@ -156,7 +156,7 @@ public class FacesUtils {
 		request.getSession().removeAttribute(name);    	
     }
     
-    private static FacesContext getCurrentInstancia(){
+    public static FacesContext getCurrentInstancia(){
     return	FacesContext.getCurrentInstance();    	
     }
 }
