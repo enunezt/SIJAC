@@ -8,13 +8,10 @@
                 xmlns:my="http://java.sun.com/jsf/composite/components">
     <ui:define name="content">
         <h:outputStylesheet name="app.css" library="css"/>
-        <h:outputScript target="head" name="showMessage.js" library="js"/>
-        <h1>Welcome</h1>
        <f:view>
-       <p:panel header="${msgs.lbl_Menu}"  toggleable="true"  toggleOrientation="horizontal" menuTitle="${msgs.lbl_Menu}" toggleSpeed="10" id="pnl"  widgetVar="panel">
+       <p:panel header="${msgs.lbl_informacion}"  toggleable="true" menuTitle="${msgs.lbl_informacion}" toggleSpeed="10" id="pnlInfo"  widgetVar="panelInfo">
  			<ui:include src="/resources/includes/about.xhtml"></ui:include>   
        </p:panel>
  		</f:view>
-  
     </ui:define>
 </ui:composition>

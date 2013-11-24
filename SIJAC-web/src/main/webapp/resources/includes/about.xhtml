@@ -9,23 +9,127 @@ xmlns="http://www.w3.org/1999/xhtml"
       xmlns:my="http://java.sun.com/jsf/composite/components">
 
 <ui:composition>
-    <p>Learn more about JBoss Enterprise Application Platform 6.</p>
-    <ul>
-        <li><a href="https://access.redhat.com/knowledge/docs/JBoss_Enterprise_Application_Platform/">Documentation</a></li>
-        <li><a href="http://red.ht/jbeap-6">Product Information</a></li>
-    </ul>
-    <p>Learn more about JBoss AS 7.</p>
-    <ul>
-        <li><a href="http://www.jboss.org/jdf/quickstarts/jboss-as-quickstart/guide/Introduction">Getting
-            Started Developing Applications Guide</a></li>
-        <li><a href="http://jboss.org/jbossas">Community Project Information</a></li>
-    </ul>
-    <p>Explore JavaServer Faces (JSF), and RichFaces - the component set built on top of JSF 2.</p>
-    <ul>
-        <li><a href="http://www.richfaces.org">RichFaces project</a></li>
-        <li><a href="http://showcase.richfaces.org">RichFaces Showcase</a></li>
-        <li><a href="http://www.javaserverfaces.org">JSF community site</a></li>
-    </ul>
+
+<div >
+    <p>El Sistema de Información de las Juntas de Acción Comunal “SIJAC”, es un Producto Software desarrollado con el fin de dar solución tecnológica al desarrollo de las actividades de estos organismos cívicos-sociales
+SIJAC se encuentra estructurado bajo la siguiente Arquitectura de información:</p>
+
+<h2><b>Módulo de Seguridad, este presenta las siguientes características:</b></h2>
+
+
+<p>a.	Protección para la contraseña:</p>
+
+
+<ul>
+<li>	Cada uno de los usuarios finales debe escoger una palabra combinada con números, como palabra clave, luego debe memorizarla, posteriormente digitarla en el campo clave para ser admitido por el sistema</li>
+
+<li>	Se recomienda a los usuarios no escribir la contraseña, para evitar el riesgo que sea leída por un intruso</li>
+
+<li>	No se dejó despliegue para las claves</li>
+
+<li>	Se prohíbe la comunicación de las claves, solo en caso extremadamente necesario </li>
+
+<li>	Se recomienda a los usuario modificar la contraseña, luego que ha sido comunicada</li>
+
+<li>	Se recomienda el cambio de clave en un lapso de tiempo</li>
+
+<li>	Que la clave quede compuesta mínimo por ocho caracteres</li>
+
+<li>	Se dejó tres veces como intentos máximos fallidos de acierto, para ingresar la contraseña</li>
+</ul>
+
+
+b.	Auditoría y controles de acceso
+		
+<ul>
+<li>	Permite el registro cada vez que ocurra un evento</li>
+
+<li>	Los registros se almacenan en un área protegida por el sistema, a donde tan solo tendrá acceso el administrador del sistema</li>
+
+<li>	Las revisiones se hacen en periodos no mayores de 30 días</li>
+</ul>
+
+
+<p>c.	Núcleos de seguridad, permite crear</p>
+
+<ul>
+<li>	Cuenta de usuario</li>
+
+<li>	Administrador de sistema</li>
+
+<li>	Perfiles de usuario</li>
+
+<li>	Usuario en el script de la BD SIJAC</li>
+
+</ul>
+
+
+<h1><b>Módulo de Negocio: En este modelo se sistematizaron los siguientes procesos: </b> </h1>
+
+<ul>
+<li>a.	Registro de datos de la JAC. Usuario: Administrador del sistema</li>
+
+
+<li>b.	Registro de datos de dignatarios: Usuario: Administrador del sistema</li>
+
+
+<li>c.	Registro de datos en el libro de afiliados. Usuario: El secretario (a)</li>
+
+
+<li>d.	Registro de datos de comités. Usuario: El secretario (a), presidente</li>
+
+
+<li>e.	Registro de pago de sostenimiento. Usuario: Tesorero</li>
+
+
+<li>f.	Registro de desafiliación. Usuario: El secretario (a) y comité</li>
+
+
+<li>g.	Genera la lista de afiliados activos para el control de asistencia en los diferentes tipos de reuniones.
+<ul>
+<li>	El sistema genera un formato de planilla para ser diligenciado por los afiliados activos presentes en la reunión</li>
+
+<li>	Genera planilla de afiliados no asistentes a la reunión. Usuario: secretario(a)</li></ul>
+
+
+</li>
+
+
+
+
+<li>h.	Registra el acta de reunión de Asamblea Ordinaria. Usuarios: secretario(a) y el presidente </li>
+
+
+<li>i.	Registra el Acta de reunión de asamblea General extraordinaria. Usuarios: secretario(a) y el presidente </li>
+
+
+<li>j.	Registra el informe general de gestión. Usuarios: secretario(a) y el presidente 
+</li>
+
+<li>k.	Registra el Acta de Proceso electoral, para hacer la elección o conformación del Tribunal de Garantía. Usuarios: secretario(a), el presidente y El Tribunal de Garantía.</li>
+
+
+<li>l.	Registra las planchas para elecciones. Usuario: Tribunal de garantía y CC.
+</li>
+
+<li>m.	Registra Acta de nombramiento de dignatarios. Usuarios: secretario(a),l presidente  y El Tribunal de Garantía.</li>
+
+
+<li>n.	Registra el Acta de Empalme de Dignatarios. Usuarios: Dignatarios salientes y Dignatarios entrantes.</li>
+
+
+<li>o.	Genera certificados para el afiliado. Usuarios: secretario(a), presidente y afiliado.</li>
+
+
+<li>El sistema genera los reportes necesarios para rendir la información pertinente sobre el desarrollo de las funciones de la JAC.</li>
+</ul>
+
+
+
+<p>Bases de Datos 
+
+El sistema de gestión de la DB de SIJAC es en Postgres, este sistema es estable, de alto rendimiento, flexible, y permite extenderse fácilmente.</p>
+</div>
 </ui:composition>
 
 </html>
