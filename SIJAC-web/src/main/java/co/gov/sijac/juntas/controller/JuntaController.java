@@ -1,9 +1,11 @@
 package co.gov.sijac.juntas.controller;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
@@ -24,10 +26,10 @@ import co.gov.sijac.juntas.model.entidades.Junta;
  * 
  * @author ENUNEZT
  */
-@ManagedBean(name = "juntaController")
+@ManagedBean(name = JuntaController.NAME_BEAN)
 @ViewScoped
 public class JuntaController extends GenericoPrimeFacesController<Junta> {
-
+public static final String NAME_BEAN="juntaController";
     @Inject
     private JuntaFacade juntaService;
 
@@ -35,9 +37,16 @@ public class JuntaController extends GenericoPrimeFacesController<Junta> {
     private LugaresFacade lugarService;
     private ListaLugaresDTO lugar;
     private Junta junta;
+    private Departamento  deptoSelect;
     
+    @ManagedProperty("#{msgs}")
+    private ResourceBundle bundle; 
 
-    public JuntaController() {
+	public void setBundle(ResourceBundle bundle) {
+		this.bundle = bundle;
+	}
+
+	public JuntaController() {
 
     }
 
@@ -67,8 +76,10 @@ public class JuntaController extends GenericoPrimeFacesController<Junta> {
 
     @Override
     @PostConstruct
-    public void initNewEntidad() {
+    public void init() {
 	junta = new Junta(true);
+	if(bundle!=null)
+	System.out.println(bundle.containsKey("lbl_nombres"));
     }
 
 
@@ -104,7 +115,7 @@ public class JuntaController extends GenericoPrimeFacesController<Junta> {
 	if(junta.getCiudad().getDepartamento()!=null){   
 	
 	 RequestDTO req = new RequestDTO(getContext());
-	    req.setParam( EParametro.IdEntidad , junta.getCiudad().getDepartamento().getIdDepartamento());
+	    req.setParam( EParametro.IdEntidad , getDeptoSelect());
 	    try {
 		ResponseDTO resp = lugarService.consultarCiudades(req);
 		lugar.setCiudadItems((List<Ciudad>) resp
@@ -124,5 +135,15 @@ public class JuntaController extends GenericoPrimeFacesController<Junta> {
     public void setLugar(ListaLugaresDTO lugar) {
 	this.lugar = lugar;
     }
+    
+
+    public Departamento getDeptoSelect() {
+		return deptoSelect;
+	}
+
+	public void setDeptoSelect(Departamento deptoSelect) {
+		this.deptoSelect = deptoSelect;
+	}
+
 
 }

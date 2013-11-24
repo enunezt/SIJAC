@@ -54,7 +54,7 @@ private Opcion opcion;
 
 	@Override
 	@PostConstruct
-	public void initNewEntidad() {
+	public void init() {
 		opcion= new Opcion();
 	}
 	

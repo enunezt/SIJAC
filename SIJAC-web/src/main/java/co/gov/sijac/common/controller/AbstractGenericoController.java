@@ -57,7 +57,7 @@ public abstract class AbstractGenericoController<ENT> extends BaseController{
             addInfoMessage("Registered!", "Registration successful");            
           //  pushEvent.fire(String.format("New member added: %s (id: %d)", newMember.getName(), newMember.getId()));
             
-            initNewEntidad();
+            init();
         } catch (Exception e) {
            addErrorMessage(e);
         }
@@ -135,7 +135,7 @@ public abstract class AbstractGenericoController<ENT> extends BaseController{
     		 }
 
     //@PostConstruct
-    public abstract void initNewEntidad();
+    public abstract void init();
     /**   
      * metodo genérico utilizado en la vista al cambiar de pais
      */

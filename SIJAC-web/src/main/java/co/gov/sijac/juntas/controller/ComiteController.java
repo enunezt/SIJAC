@@ -70,7 +70,7 @@ public class ComiteController extends GenericoPrimeFacesController<Comite> {
 
     @Override
     @PostConstruct
-    public void initNewEntidad() {
+    public void init() {
 	comite = new Comite();
     }
 

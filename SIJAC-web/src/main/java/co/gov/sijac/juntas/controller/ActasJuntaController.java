@@ -109,7 +109,7 @@ public void settipoActaItems(Set<CatalogoDetalle> tipoActaItems) {
 
 	@Override
 	@PostConstruct
-	public void initNewEntidad() {
+	public void init() {
 		actasJunta= new ActasJunta();
 	}
 

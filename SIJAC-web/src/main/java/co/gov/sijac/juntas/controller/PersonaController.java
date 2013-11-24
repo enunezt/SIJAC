@@ -73,7 +73,7 @@ public class PersonaController extends GenericoPrimeFacesController<Persona> {
 
     @Override
     @PostConstruct
-    public void initNewEntidad() {
+    public void init() {
 	persona = new Persona(true);
     }
 

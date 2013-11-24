@@ -48,13 +48,7 @@
 	
 		<p:dataTable id="idTblPerfil" value="#{perfilController.entidadLst}" binding="#{perfilController.tabla}" var="perfilTO" rows="10" border="1" >
 			  			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_id}" />
-		</f:facet>		
-		<h:outputText value="#{perfilTO.idPerfil}"  />
-		</p:column>		
-		 			
+			 			
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_Nombre}" />

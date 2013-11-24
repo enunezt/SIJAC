@@ -160,7 +160,7 @@ public class PerfilController extends GenericoPrimeFacesController<Perfil>{
 	
 	@Override
 	@PostConstruct
-	public void initNewEntidad() {
+	public void init() {
 		perfil= new Perfil();
 	}
 	public DualListModel<String> getOpciones() {

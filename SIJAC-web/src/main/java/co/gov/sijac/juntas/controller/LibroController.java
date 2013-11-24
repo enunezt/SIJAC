@@ -70,7 +70,7 @@ public class LibroController extends GenericoPrimeFacesController<Libro> {
 
     @Override
     @PostConstruct
-    public void initNewEntidad() {
+    public void init() {
 	libro = new Libro();
     }
 

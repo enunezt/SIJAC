@@ -98,7 +98,7 @@ public UsuarioController() {
    
     @PostConstruct
     @Override
-    public void initNewEntidad() {
+    public void init() {
         usuario = new Usuario();
     }
 

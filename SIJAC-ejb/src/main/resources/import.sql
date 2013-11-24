@@ -62,13 +62,13 @@ INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (10,'Jun
 
 
 
-INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (11,'Persona','Gestion de Persona',10,NULL);
-INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (12,'Junta','Gestion de Junta',10,NULL);
-INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (13,'Libro','Gestion de Libro',10,NULL);
-INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (14,'Dignatario','Gestion de Dignatario',10,NULL);
-INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (15,'Comité','Gestion de Comité',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (11,'Gestionar Persona','Gestion de Persona',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (12,'Gestionar Junta','Gestion de Junta',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (13,'Gestionar Libro','Gestion de Libro',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (14,'Gestionar Dignatario','Gestion de Dignatario',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (15,'Gestionar Comité','Gestion de Comité',10,NULL);
 INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (16,'Pagos Afiliado','Gestion de Pagos Afiliado',10,NULL);
-INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (17,'Actas Junta','Gestion de Actas Junta',10,NULL);
+INSERT INTO Menu(id_menu,nombre,descripcion,id_padre,fec_cambio) values (17,'Actas/Planchas','Gestion de Actas Junta',10,NULL);
 
 
 

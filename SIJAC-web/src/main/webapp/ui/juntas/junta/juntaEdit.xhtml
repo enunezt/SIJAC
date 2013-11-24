@@ -35,12 +35,18 @@
  	</h:panelGroup>					
 		<h:outputLabel value="${msgs.lbl_estado}" />
 		<h:panelGroup>	
-		<p:inputText value="#{ juntaController.junta.estado}" />
+		<p:selectOneMenu value="#{juntaController.junta.estado}"
+					effect="fade">
+					<f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
+					<f:selectItem itemLabel="ACTIVO" itemValue="A" />
+					<f:selectItem itemLabel="INACTIVO" itemValue="I" />
+					<f:selectItem itemLabel="CANCELADO" itemValue="C" />
+		</p:selectOneMenu>
  	</h:panelGroup>					
 		<h:outputLabel value="${msgs.lbl_ciudad}" />
 		<h:panelGrid columns="2" cellspacing="5">
 
-<p:selectOneMenu value="#{juntaController.junta.ciudad.departamento}" effect="fade" id="deptoCiudad" converter="lugaresConverter" style="width: 100px;">
+<p:selectOneMenu value="#{juntaController.deptoSelect}" effect="fade" id="deptoCiudad" converter="lugaresConverter" style="width: 100px;">
 <f:selectItem itemLabel="${msgs.lbl_item_seleccione}" itemValue="" />
 <f:selectItems value="#{juntaController.lugar.deptoItems}" var="depto" itemLabel="#{depto.nombre}" itemValue="#{depto}"/>
 <p:ajax listener="#{juntaController.departamentoChange}" update="ciudadCiudad"/>
@@ -56,12 +62,13 @@
 		<h:panelGrid columns="4">
 		<p:commandButton action="#{juntaController.doCrear}" value="${msgs.btn_crear}" update="idTblJunta" style="margin-top: 10px;" icon="ui-icon-plusthick" ></p:commandButton>
 		<p:commandButton action="#{juntaController.doActualizar}" value="${msgs.btn_modificar}" update="idTblJunta" style="margin-top: 10px;" icon="ui-icon-disk" ></p:commandButton>
-		<p:commandButton action="#{juntaController.doBorrar}" value="${msgs.btn_eliminar}" update="idTblJunta" style="margin-top: 10px;" icon="ui-icon-minusthick" ></p:commandButton>
 		<p:commandButton action="#{juntaController.doConsultar}" value="${msgs.btn_consultar}" update="idTblJunta" style="margin-top: 10px;" icon="ui-icon-search" ></p:commandButton>
 	                
 		</h:panelGrid>
 	<div  style="width:100%; overflow: auto;">
-		<p:dataTable id="idTblJunta" value="#{juntaController.entidadLst}" binding="#{juntaController.tabla}" var="juntaTO" rows="10" border="1" >
+		<p:dataTable id="idTblJunta" value="#{juntaController.entidadLst}" binding="#{juntaController.tabla}" var="juntaTO" 
+		rows="10" border="1"  paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "  
+      resizableColumns="true">
 	<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_codigo}" />
@@ -111,13 +118,7 @@
 		<h:outputText value="#{juntaTO.numResolucion}"  />
 		</p:column>		
 		 			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_estado}" />
-		</f:facet>		
-		<h:outputText value="#{juntaTO.estado}"  />
-		</p:column>		
-		 			
+		
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_ciudad}" />

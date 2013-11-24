@@ -93,7 +93,12 @@ public class LugaresServicioImpl implements LugaresServicio{
 	try {
 	    Departamento idDepartamento=(Departamento) request.getParam(EParametro.Entidad);
 	    if(idDepartamento==null){
+	    	
+	    	if(request.getParam(EParametro.IdEntidad)==null)
+	    		throw new ServicioExcepcion("Error en la consulta de Ciudades, Departamento con valor null");
+	    		
 		idDepartamento=new Departamento();
+		
 		  idDepartamento.setIdDepartamento((Integer)request.getParam(EParametro.IdEntidad));
 	    }    
 	    Map<String,Object> parameters=new HashMap<String, Object>();

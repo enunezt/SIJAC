@@ -70,7 +70,7 @@ public class DignatarioController extends
 
     @Override
     @PostConstruct
-    public void initNewEntidad() {
+    public void init() {
 	dignatario = new Dignatario();
     }
     

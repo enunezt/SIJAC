@@ -79,7 +79,7 @@ private Menu menu;
 
 	@Override
 	@PostConstruct
-	public void initNewEntidad() {
+	public void init() {
 		menu= new Menu();
 	}
 

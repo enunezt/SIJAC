@@ -68,13 +68,7 @@
 		<p:dataTable id="idTblUsuario" value="#{usuarioController.entidadLst}" 
 		binding="#{usuarioController.tabla}" var="usuarioTO" rows="10" border="1" >
 		  			
-		<p:column >
-		<f:facet name="header">
-		<h:outputLabel value="${msgs.lbl_id}" />
-		</f:facet>		
-		<h:outputText value="#{usuarioTO.idUsuario}"  />
-		</p:column>		
-		 			
+		
 		<p:column >
 		<f:facet name="header">
 		<h:outputLabel value="${msgs.lbl_usuario}" />

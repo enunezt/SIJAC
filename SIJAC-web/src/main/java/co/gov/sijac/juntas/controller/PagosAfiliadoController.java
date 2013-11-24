@@ -59,7 +59,7 @@ public class PagosAfiliadoController extends
 
     @Override
     @PostConstruct
-    public void initNewEntidad() {
+    public void init() {
 	pagosAfiliado = new PagosAfiliado();
     }
 

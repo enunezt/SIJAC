@@ -59,7 +59,7 @@ public class CatalogoController extends GenericoPrimeFacesController<Catalogo>{
 
 	@Override
 	@PostConstruct
-	public void initNewEntidad() {
+	public void init() {
 		catalogo= new Catalogo();
 	}
 
