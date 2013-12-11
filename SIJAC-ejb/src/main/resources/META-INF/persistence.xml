@@ -26,7 +26,7 @@
       <!-- The datasource is deployed as <EAR>/META-INF/SIJAC-ds.xml, you
          can find it in the source at ear/src/main/application/META-INF/SIJAC-ds.xml 
          <jta-data-source>java:jboss/datasources/SIJACDS</jta-data-source>-->
-      <jta-data-source>java:jboss/TestDS</jta-data-source>
+      <jta-data-source>java:jboss/datasources/SIJACDS</jta-data-source>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
