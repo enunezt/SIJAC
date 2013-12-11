@@ -4,7 +4,7 @@
   <module>
     <web>
       <web-uri>SIJAC-web.war</web-uri>
-      <context-root>/ROOT</context-root>
+      <context-root>/SIJAC-web</context-root>
     </web>
   </module>
   <module>
